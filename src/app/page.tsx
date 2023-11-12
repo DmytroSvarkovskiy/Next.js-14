@@ -1,5 +1,9 @@
-import styles from './page.module.scss';
+import { Container } from '@/shared';
 
 export default function Home() {
-  return <main>Hello!!!!!</main>;
+  return (
+    <Container as="main" color="red" $alignItems="center" $justifyContent="center">
+      Hello!!!!!
+    </Container>
+  );
 }

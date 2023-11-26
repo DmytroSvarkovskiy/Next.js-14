@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
-@import 'node_modules/modern-normalize/modern-normalize.css';
 
   html {
     scroll-behavior: smooth;

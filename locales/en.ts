@@ -41,4 +41,5 @@ export default {
   medicine: 'Medicine',
   vaccines: 'Vaccines',
   puppies: 'Puppies',
+  noOptionsAvailable: 'No options available',
 } as const;

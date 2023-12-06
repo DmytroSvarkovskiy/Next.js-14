@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import Provider from '@/lib/Provider';
 import { getCurrentLocale } from '@/locales/server';
-const inter = Inter({ subsets: ['latin'] });
+
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={locale}>
       <Provider>
-        <body className={inter.className}>
+        <body className={montserrat.className}>
           <main>{children}</main>
         </body>
       </Provider>

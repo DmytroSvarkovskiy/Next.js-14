@@ -34,11 +34,11 @@ export const GlobalStyle = createGlobalStyle`
 };
 
 body {
-  font-family: 'Fixel Display', sans-serif;
+  font-family: 'Montserrat', sans-serif;
     display:flex;
     /* justify-content:center; */
     background-color:#F5F8FA;
-    color:#1E1C2C;
+    color:#070C11;
  
 };
   *,

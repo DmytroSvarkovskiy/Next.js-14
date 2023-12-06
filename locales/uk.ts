@@ -41,4 +41,5 @@ export default {
   medicine: 'Медицина',
   vaccines: 'Щеплення',
   puppies: 'Цуценята',
+  noOptionsAvailable: 'Немає доступних опцій',
 } as const;

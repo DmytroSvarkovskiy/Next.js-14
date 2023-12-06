@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = getCurrentLocale();
   return (
-    <html lang={locale}>
-      <RootProvider>
+    <RootProvider>
+      <html lang={locale}>
         <body className={montserrat.className}>
           <main>{children}</main>
         </body>
-      </RootProvider>
-    </html>
+      </html>
+    </RootProvider>
   );
 }

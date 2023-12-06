@@ -11,6 +11,7 @@ export type TSelectProps = {
   defaultValue?: { label: string; value: string };
   isClearable?: boolean;
   menuPortalTarget?: HTMLElement;
+  noOptionsMessage?: string;
 };
 export type TStyledSelectProps = { width?: string; height?: string };
 export type TProps = {

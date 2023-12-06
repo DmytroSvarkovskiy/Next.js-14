@@ -1,3 +1,4 @@
+'use client';
 import { Container, Inputs } from '@/shared';
 
 export default function Home() {

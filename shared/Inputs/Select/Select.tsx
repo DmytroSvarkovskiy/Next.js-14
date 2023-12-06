@@ -15,6 +15,7 @@ export const SelectInput = ({
   defaultValue,
   isClearable = false,
   menuPortalTarget,
+  noOptionsMessage,
 }: TSelectProps) => {
   const selectStyles = {
     valueContainer: (provided: CSSObjectWithLabel) => ({
@@ -88,7 +89,7 @@ export const SelectInput = ({
       <Select
         menuPortalTarget={menuPortalTarget}
         options={options}
-        // noOptionsMessage={() => t('noOptionsAvailable')}
+        noOptionsMessage={() => noOptionsMessage || ''}
         styles={selectStyles}
         onChange={onChange}
         classNamePrefix="select"

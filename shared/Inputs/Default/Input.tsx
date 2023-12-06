@@ -18,7 +18,7 @@ const Default = React.forwardRef<HTMLInputElement, TInputProps>(
       hidepassword,
       disabled = false,
       $background = 'transparent',
-      $padding = '10px 12px',
+      $padding = '8px 16px',
       ...props
     },
     ref

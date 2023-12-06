@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "next": "14.0.3",
     "next-international": "^1.1.4",
     "normalize.css": "^8.0.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
+    "react-redux": "^9.0.2",
     "react-select": "^5.8.0",
+    "redux-persist": "^6.0.0",
     "styled-components": "^6.1.1",
     "swr": "^2.2.4"
   },

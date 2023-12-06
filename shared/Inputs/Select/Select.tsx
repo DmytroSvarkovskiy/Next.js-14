@@ -1,11 +1,9 @@
 import Select, { CSSObjectWithLabel, ControlProps, OptionProps } from 'react-select';
 import { ErrorP, SelectWrap } from './styled';
 import { TSelectProps } from './types';
-import { useI18n } from '@/locales/client';
-import { getCurrentLocale } from '@/locales/server';
 
 export const SelectInput = ({
-  width = '335px',
+  width = '232px',
   height = '44px',
   onChange,
   value,
@@ -18,9 +16,6 @@ export const SelectInput = ({
   isClearable = false,
   menuPortalTarget,
 }: TSelectProps) => {
-  const locale = getCurrentLocale();
-  // const t = useI18n();
-
   const selectStyles = {
     valueContainer: (provided: CSSObjectWithLabel) => ({
       ...provided,
@@ -39,10 +34,10 @@ export const SelectInput = ({
       width,
       padding: ' 0 4px',
       borderRadius: '8px',
-      boxShadow: state.isFocused || state.menuIsOpen ? '0 0 0 1px #FD835D' : undefined,
-      border: state.isFocused || state.menuIsOpen ? '1px solid #FD835D' : undefined,
+      boxShadow: state.isFocused || state.menuIsOpen ? '0 0 0 1px #0086BF' : undefined,
+      border: state.isFocused || state.menuIsOpen ? '1px solid #0086BF' : undefined,
       '&:hover': {
-        border: state.isFocused || state.menuIsOpen ? '1px solid #FD835D' : undefined,
+        border: state.isFocused || state.menuIsOpen ? '1px solid #0086BF' : undefined,
       },
     }),
 
@@ -55,7 +50,7 @@ export const SelectInput = ({
       ...provided,
       padding: '0',
       display: 'flex',
-      color: '#FD835D',
+      color: '#0086BF',
     }),
 
     menu: (base: CSSObjectWithLabel) => ({
@@ -72,7 +67,7 @@ export const SelectInput = ({
       backgroundColor: state.isSelected
         ? '#646369'
         : state.isFocused
-        ? '#FD835D'
+        ? '#9DADBC'
         : provided.backgroundColor,
       color: state.isSelected || state.isFocused ? 'white' : provided.color,
       ':active': {

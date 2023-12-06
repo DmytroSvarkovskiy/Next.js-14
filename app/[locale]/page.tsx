@@ -1,7 +1,9 @@
-import { getI18n } from '@/locales/server';
-import { Inputs } from '@/shared/Inputs';
+import { Container, Inputs } from '@/shared';
 
-export default async function Home() {
-  const t = await getI18n();
-  return <div>{t('birds')}</div>;
+export default function Home() {
+  return (
+    <Container>
+      <Inputs.Default />
+    </Container>
+  );
 }

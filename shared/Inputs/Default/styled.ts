@@ -6,10 +6,9 @@ export const StyledInput = styled.input<TStyledInputProps>`
   border-radius: 8px;
   box-sizing: border-box;
   display: block;
-  /* outline: none; */
   border: none;
   padding: ${({ $padding }) => $padding};
-  outline: ${({ theme, $error }) => (!$error ? theme.borderInput : theme.errorBorderInput)};
+  outline: ${({ theme }) => theme.borderInputs};
   height: ${({ height }) => height};
   width: ${({ width }) => width};
   font-size: 16px;
@@ -20,7 +19,7 @@ export const StyledInput = styled.input<TStyledInputProps>`
     background-color: ${({ theme }) => theme.colors.grey};
   }
   &:focus {
-    outline: 2px solid
+    outline: 1px solid
       ${({ theme, $error }) => (!$error ? theme.colors.blue : theme.colors.errorRed)};
   }
 `;

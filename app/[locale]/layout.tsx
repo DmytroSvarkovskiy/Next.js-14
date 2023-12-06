@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
-import Provider from '@/lib/Provider';
+import RootProvider from '@/lib/RootProvider';
 import { getCurrentLocale } from '@/locales/server';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
@@ -14,11 +14,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const locale = getCurrentLocale();
   return (
     <html lang={locale}>
-      <Provider>
+      <RootProvider>
         <body className={montserrat.className}>
           <main>{children}</main>
         </body>
-      </Provider>
+      </RootProvider>
     </html>
   );
 }

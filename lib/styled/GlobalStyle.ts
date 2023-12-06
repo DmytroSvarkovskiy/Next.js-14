@@ -37,7 +37,7 @@ body {
   font-family: 'Montserrat', sans-serif;
     display:flex;
     /* justify-content:center; */
-    background-color:#F5F8FA;
+    background-color:#F7F7F8;
     color:#070C11;
  
 };

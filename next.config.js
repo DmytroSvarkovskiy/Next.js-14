@@ -7,7 +7,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'preproduction.api.petshealth.kitg.com.ua',
-        pathname: '/public/**',
+        pathname: '/public/ads-categories/**',
       },
     ],
   },

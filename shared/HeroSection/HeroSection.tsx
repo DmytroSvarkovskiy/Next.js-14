@@ -3,8 +3,6 @@ import { HeroSectionWrap } from './styled';
 import { THeroSectionTypes } from './types';
 
 export const HeroSection = ({ filterBar, text }: THeroSectionTypes) => {
-  console.log(text.split(' ').slice(0, 4));
-
   return (
     <HeroSectionWrap>
       <Container $flexDirection="column" $alignItems="center">

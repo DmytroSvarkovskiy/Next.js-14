@@ -60,8 +60,8 @@ export const Header = () => {
             </span>
             <span
               onClick={onLinkClick}
-              className={pathname === 'contacs' ? 'active' : 'inactive'}
-              id="/contacs"
+              className={pathname === 'contacts' ? 'active' : 'inactive'}
+              id="/contacts"
             >
               {t('contacts')}
             </span>

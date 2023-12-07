@@ -11,7 +11,7 @@ export const HeroSectionWrap = styled(Container).attrs({ as: 'section' })`
   overflow: hidden;
   top: 0;
   z-index: -1;
-  background: linear-gradient(to right, rgba(255, 204, 247, 0.6), rgba(197, 222, 255, 0.6));
+  background: linear-gradient(to right, rgba(255, 204, 247, 0.5), rgba(197, 222, 255, 0.5));
   /* opacity: 0.7; */
   padding: 100px 20px 20px;
   @media (min-width: 768px) {

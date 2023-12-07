@@ -1,4 +1,4 @@
-import { HeroSection } from '@/shared/HeroSection/HeroSection';
+import { HeroSection } from '@/widgets/HeroSection/HeroSection';
 import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
 
 export default async function Features() {

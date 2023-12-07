@@ -27,6 +27,7 @@ export const selectStylesLang = {
     color: '#070C11',
     with: '8px',
   }),
+  menuPortal: (base: CSSObjectWithLabel) => ({ ...base, zIndex: 9999 }),
 };
 export const LangWrap = styled.div`
   display: flex;
@@ -43,4 +44,7 @@ export const Singlevalue = styled.div`
   gap: 4px;
   width: 33px;
   font-size: 16px;
+  @media (min-width: 768px) {
+    padding: 2px 5px;
+  }
 `;

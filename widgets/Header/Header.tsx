@@ -1,7 +1,5 @@
 'use client';
 import { useI18n } from '@/locales/client';
-import { Container } from '../Container/Container';
-import { PageWrapper } from '../PageWrapper/PageWrapper';
 import { ButtonClose, HeaderWrap, LinkWrap, Logo, LogoLink, BurgerMenu } from './styled';
 import { usePathname } from 'next/navigation';
 import { ChangeLang } from './ui/ChangeLang';
@@ -9,6 +7,8 @@ import { IoMdClose } from 'react-icons/io';
 import { MouseEvent, useState } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { useRouter } from 'next/navigation';
+import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
+import { Container } from '@/shared/Container/Container';
 
 export const Header = () => {
   const [visibleMenu, setVisibleMenu] = useState(false);

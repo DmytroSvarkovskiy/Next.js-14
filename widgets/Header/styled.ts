@@ -1,21 +1,17 @@
 'use client';
 import styled from 'styled-components';
-import { Container } from '../Container/Container';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Container } from '@/shared/Container/Container';
 
 export const HeaderWrap = styled(Container).attrs({ as: 'header' })`
   background-color: transparent;
   padding: 20px 0;
 
-  margin-bottom: 320px;
-
   @media (min-width: 768px) {
-    margin-bottom: 260px;
   }
   @media (min-width: 1200px) {
-    padding: 34px 0 0;
-    margin-bottom: 325px;
+    padding: 24px 0;
   }
 `;
 export const Logo = styled(Image)`
@@ -72,7 +68,7 @@ export const LinkWrap = styled(Container)<{ $visible: boolean }>`
     padding: 0;
     span {
       display: block;
-      height: 20px;
+      height: 18px;
     }
   }
   @media (min-width: 1200px) {

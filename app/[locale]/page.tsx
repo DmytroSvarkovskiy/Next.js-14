@@ -1,10 +1,11 @@
-'use client';
-import { Container, Inputs } from '@/shared';
+import { HeroSection } from '@/shared/HeroSection/HeroSection';
+import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
 
-export default function Home() {
+export default async function Home() {
   return (
-    <Container>
-      <Inputs.Default />
-    </Container>
+    <>
+      <HeroSection text="HOME" />
+      <PageWrapper>Home</PageWrapper>
+    </>
   );
 }

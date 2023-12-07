@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 
   img {
     display:block;
-    width:100%;
+    /* width:100%; */
 };
 
  a {
@@ -36,9 +36,10 @@ export const GlobalStyle = createGlobalStyle`
 body {
   font-family: 'Montserrat', sans-serif;
     display:flex;
-    /* justify-content:center; */
+    justify-content:center;
     background-color:#F7F7F8;
     color:#070C11;
+    flex-direction: column
  
 };
   *,

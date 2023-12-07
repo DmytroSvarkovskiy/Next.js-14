@@ -1,9 +1,10 @@
 export default {
+  functions: 'Functions',
   features: 'Features',
-  inDevelopment: 'In Development',
+  inDevelopment: 'In development',
   contacts: 'Contacts',
   careTips: 'Care Tips',
-  petCareAdvice: 'Pet Care Advice',
+  petCareAdvice: 'Pet care advice',
   cats: 'Cats',
   dogs: 'Dogs',
   birds: 'Birds',

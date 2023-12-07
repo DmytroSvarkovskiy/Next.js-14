@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import RootProvider from '@/lib/RootProvider';
 import { getCurrentLocale } from '@/locales/server';
+import { Header } from '@/shared/Header/Header';
+import { I18nProviderClient } from '@/locales/client';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -13,12 +15,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = getCurrentLocale();
   return (
-    <RootProvider>
-      <html lang={locale}>
+    <html lang={locale}>
+      <RootProvider>
         <body className={montserrat.className}>
+          <I18nProviderClient locale={locale}>
+            <Header />
+          </I18nProviderClient>
+
           <main>{children}</main>
         </body>
-      </html>
-    </RootProvider>
+      </RootProvider>
+    </html>
   );
 }

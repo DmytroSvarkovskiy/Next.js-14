@@ -32,7 +32,7 @@ export const MainImagePost = styled(Image).attrs({ width: 744, height: 420 })`
 `;
 export const CategoryName = styled(Container)`
   position: absolute;
-  z-index: 1;
+
   top: 20px;
   left: 21px;
   padding: 4px 16px;

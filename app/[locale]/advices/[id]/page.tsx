@@ -5,6 +5,7 @@ import { Header } from '@/widgets/Header/Header';
 import { Breadcrumbs } from './_ui/Breadcrumbs/Breadcrumbs';
 import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
 import { ShareCard } from '@/entities/ShareCard/ShareCard';
+import { BlurWrap } from './_ui/BlurWrap/BlurWrap';
 
 const Article = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
@@ -21,6 +22,7 @@ const Article = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <I18nProviderClient locale={locale}>{<Header />}</I18nProviderClient>
+      <BlurWrap />
       <PageWrapper $alignItems="flex-start" $justifyContent="flex-start" $flexDirection="column">
         <Breadcrumbs title={data.title[indexLang].value} />
         <ShareCard data={data} />

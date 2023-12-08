@@ -4,7 +4,7 @@ export default {
   inDevelopment: 'In development',
   contacts: 'Contacts',
   careTips: 'Care Tips',
-  petCareAdvice: 'Pet care advice',
+  petCareAdvice: 'Tips for caring for your pet',
   cats: 'Cats',
   dogs: 'Dogs',
   birds: 'Birds',
@@ -43,4 +43,5 @@ export default {
   vaccines: 'Vaccines',
   puppies: 'Puppies',
   noOptionsAvailable: 'No options available',
+  noContentAvailable: 'No content available',
 } as const;

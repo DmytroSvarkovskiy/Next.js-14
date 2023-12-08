@@ -1,3 +1,4 @@
+'use client';
 import styled from 'styled-components';
 import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
 import { Container } from '@/shared/Container/Container';

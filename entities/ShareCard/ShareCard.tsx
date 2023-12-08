@@ -26,7 +26,7 @@ export const ShareCard = ({ data }: { data: TOneAdvice }) => {
         <CategoryName>
           {data.category?.title[indexLang]?.value.length
             ? data.category?.title[indexLang]?.value
-            : data.category?.title[0]?.value}
+            : data.category?.title[0]?.value || 'not found'}
         </CategoryName>
         <SharedButtonWrap>
           <FacebookShareButton url={url}>

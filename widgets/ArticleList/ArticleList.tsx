@@ -8,6 +8,7 @@ import { ArticleListStyled, LoadMore } from './styled';
 import { TAdviceParams } from '@/features/petСare/api/types';
 import { nanoid } from '@reduxjs/toolkit';
 import { useI18n } from '@/locales/client';
+import ScrollToTop from 'react-scroll-to-top';
 
 export const ArticleList = () => {
   const t = useI18n();
@@ -43,7 +44,14 @@ export const ArticleList = () => {
 
   const loadMore = () => {
     setSize(prevSize => prevSize + 1);
+    setTimeout(() => {
+      window.scrollTo({
+        top: window.scrollY + 300,
+        behavior: 'smooth',
+      });
+    }, 300);
   };
+
   const advices = data ? data.flatMap(pageData => pageData?.models) : [];
   const totalCount = data?.[0]?.totalCount || 0;
   const isAllLoaded = advices.length >= totalCount;
@@ -56,6 +64,7 @@ export const ArticleList = () => {
       <LoadMore onClick={loadMore} disabled={isAllLoaded}>
         {t('loadMore')}
       </LoadMore>
+      <ScrollToTop smooth top={600} />
     </Container>
   );
 };

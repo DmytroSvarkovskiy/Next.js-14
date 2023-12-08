@@ -43,4 +43,5 @@ export default {
   vaccines: 'Щеплення',
   puppies: 'Цуценята',
   noOptionsAvailable: 'Немає доступних опцій',
+  noContentAvailable: 'Немає доступного вмісту',
 } as const;

@@ -23,11 +23,9 @@ export const ShareCard = ({ data }: { data: TOneAdvice }) => {
     <Wrapper>
       <ShareWrapper>
         <MainImagePost alt="photoPost" src={`${baseURL}/public/advice/${data.images[0]}`} />
-        <CategoryName>
-          {data.category?.title[indexLang]?.value.length
-            ? data.category?.title[indexLang]?.value
-            : data.category?.title[0]?.value || 'not found'}
-        </CategoryName>
+        {data.category?.title[indexLang]?.value.length && (
+          <CategoryName>{data.category?.title[indexLang]?.value}</CategoryName>
+        )}
         <SharedButtonWrap>
           <FacebookShareButton url={url}>
             <FacebookIcon size={32} round />

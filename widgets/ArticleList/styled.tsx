@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
 import { Container } from '@/shared/Container/Container';
 export const ArticleListStyled = styled(PageWrapper).attrs({ as: 'ul' })`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
-  flex-wrap: wrap;
   padding-bottom: 12px;
   row-gap: 24px;
 `;

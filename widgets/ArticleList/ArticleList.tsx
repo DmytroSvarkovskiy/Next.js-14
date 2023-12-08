@@ -5,8 +5,7 @@ import { getAdvice } from '@/features/petСare/api/api';
 import { Container } from '@/shared/Container/Container';
 import { AdviceCard } from '@/entities/AdviceCard/AdviceCard';
 import { ArticleListStyled, LoadMore } from './styled';
-import { TAdviceParams } from '@/features/petСare/api/types';
-import { nanoid } from '@reduxjs/toolkit';
+import { TAdviceParams, TAdviceResponse } from '@/features/petСare/api/types';
 import { useI18n } from '@/locales/client';
 import ScrollToTop from 'react-scroll-to-top';
 
@@ -16,7 +15,7 @@ export const ArticleList = () => {
     state => state.advisePetState
   );
 
-  const getKey = (pageIndex: number, previousPageData: any) => {
+  const getKey = (pageIndex: number, previousPageData: TAdviceResponse) => {
     if (previousPageData && !previousPageData.models.length) return null;
     return [
       'advices',
@@ -27,6 +26,7 @@ export const ArticleList = () => {
         page: (pageIndex + 1).toString(),
         limit: limit?.toString(),
         order: order?.toString(),
+        tags: tags ? tags : undefined,
       },
     ];
   };
@@ -52,14 +52,14 @@ export const ArticleList = () => {
     }, 300);
   };
 
-  const advices = data ? data.flatMap(pageData => pageData?.models) : [];
+  const advices = data?.flatMap(pageData => pageData?.models) || [];
   const totalCount = data?.[0]?.totalCount || 0;
   const isAllLoaded = advices.length >= totalCount;
 
   return (
     <Container $margin="20px 0 0" $flexDirection="column">
       <ArticleListStyled as="ul" $gap="16px" $flexWrap="wrap">
-        {advices?.map((item, i) => item && <AdviceCard item={item} key={nanoid()} />)}
+        {advices?.map((item, i) => item && <AdviceCard item={item} key={`${item._id}` + i} />)}
       </ArticleListStyled>
       <LoadMore onClick={loadMore} disabled={isAllLoaded}>
         {t('loadMore')}

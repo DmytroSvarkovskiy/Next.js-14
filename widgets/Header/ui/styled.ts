@@ -1,3 +1,4 @@
+'use client';
 import { CSSObjectWithLabel } from 'react-select';
 import styled from 'styled-components';
 

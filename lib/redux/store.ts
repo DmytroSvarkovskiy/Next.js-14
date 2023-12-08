@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { CarePeTReduser } from '@/features';
+import { AdvicePeTReduser } from '@/features';
 import {
   persistStore,
   persistReducer,
@@ -19,7 +19,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  carePetState: persistReducer(persistConfig, CarePeTReduser),
+  advisePetState: persistReducer(persistConfig, AdvicePeTReduser),
 });
 
 export const store = configureStore({

@@ -6,7 +6,8 @@ export type TInitialState = {
   limit: string;
   order: number;
   search: string;
-  categories: string[] | null;
+  categories: string | null;
   tags: string[] | null;
   languages: string;
+  visibleFilter: boolean;
 };

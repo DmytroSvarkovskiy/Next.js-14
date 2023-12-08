@@ -10,10 +10,11 @@ const initialState: TInitialState = {
   categories: null,
   tags: null,
   languages: '',
+  visibleFilter: false,
 };
 
-export const carePetSlice = createSlice({
-  name: 'carePetSlice',
+export const AdvicePetSlice = createSlice({
+  name: 'advicePetSlice',
   initialState,
   reducers: {
     setSort: (state, { payload }: PayloadAction<string | null>) => {
@@ -28,7 +29,7 @@ export const carePetSlice = createSlice({
     setSearch: (state, { payload }: PayloadAction<string>) => {
       state.search = payload;
     },
-    setCategory: (state, { payload }: PayloadAction<string[] | null>) => {
+    setCategory: (state, { payload }: PayloadAction<string | null>) => {
       state.categories = payload;
     },
     setTags: (state, { payload }: PayloadAction<string[] | null>) => {
@@ -37,8 +38,11 @@ export const carePetSlice = createSlice({
     setLanguages: (state, { payload }: PayloadAction<string>) => {
       state.languages = payload;
     },
+    setVasibleFilter: state => {
+      state.visibleFilter = !state.visibleFilter;
+    },
   },
 });
 
-export const CarePetActions = carePetSlice.actions;
-export const CarePeTReduser = carePetSlice.reducer;
+export const AdvicePetActions = AdvicePetSlice.actions;
+export const AdvicePeTReduser = AdvicePetSlice.reducer;

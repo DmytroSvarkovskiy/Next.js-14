@@ -16,14 +16,29 @@ export const CategoryItem = styled(Container).attrs({ as: 'li' })<{ $active?: bo
   margin: 0;
   align-items: center;
   cursor: pointer;
-  max-width: 120px;
+  width: 120px;
   height: auto;
+  p {
+    font-size: 14px;
+    font-weight: 500;
+  }
   &:hover {
     background-color: #ebf3ff;
   }
   transition: background-color 0.3s;
   @media (min-width: 768px) {
-    max-width: 136px;
+    min-width: 140px;
+    width: auto;
     padding: 4px 16px;
+    p {
+      font-size: 16px;
+    }
+  }
+`;
+export const FilterWrap = styled(Container).attrs({ as: 'li', width: 'auto' })`
+  margin: 0;
+  cursor: pointer;
+  @media (min-width: 768px) {
+    margin-left: 40px;
   }
 `;

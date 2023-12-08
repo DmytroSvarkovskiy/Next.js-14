@@ -15,8 +15,6 @@ export const HeaderWrap = styled(Container).attrs({ as: 'header' })`
   }
 `;
 export const Logo = styled(Image)`
-  width: auto;
-  height: auto;
   width: 181px;
   height: 60px;
 

@@ -9,6 +9,11 @@ const nextConfig = {
         hostname: 'preproduction.api.petshealth.kitg.com.ua',
         pathname: '/public/ads-categories/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'preproduction.api.petshealth.kitg.com.ua',
+        pathname: '/public/advice/**',
+      },
     ],
   },
 };

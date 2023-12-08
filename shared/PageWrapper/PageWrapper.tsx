@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Container } from '../Container/Container';
 
 export const PageWrapper = styled(Container)`
-  align-items: center;
-  justify-content: center;
   width: 100%;
   overflow: hidden;
   padding: 0 10px;

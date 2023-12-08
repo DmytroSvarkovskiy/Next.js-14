@@ -14,9 +14,7 @@ export const HeroSection = ({ filterBar, text }: THeroSectionTypes) => {
         <h1>{text.split(' ').slice(0, 4).join(' ')}</h1>
         <h1 className="blue">{text.split(' ').slice(4, text.split(' ').length).join(' ')}</h1>
       </HeadingTitle>
-      <Container width="100%" $alignItems="center">
-        {filterBar}
-      </Container>
+      {filterBar}
     </HeroSectionWrap>
   );
 };

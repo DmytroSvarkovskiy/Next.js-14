@@ -12,7 +12,10 @@ import {
 const baseURL = process.env.NEXT_PUBLIC_URL_USER;
 
 export const getAdvice = async (params: TAdviceParams) => {
-  privateInstance.get<TAdviceResponse>('/ads/api/v1/user/advice', { params: { ...params } });
+  const { data } = await privateInstance.get<TAdviceResponse>('/ads/api/v1/user/advice', {
+    params: { ...params },
+  });
+  return data;
 };
 
 export const getCurrentAdvice = async (id: string): Promise<TOneAdvice> => {
@@ -31,12 +34,12 @@ export const getCurrentAdvice = async (id: string): Promise<TOneAdvice> => {
 };
 
 export const getAdvices = async (params: TAdviceParams): Promise<TAdviceResponse> => {
-  const query = JSON.stringify(params);
-  const res = await fetch(`${baseURL}/ads/api/v1/user/advice?${query}`, {
+  const res = await fetch(`${baseURL}/ads/api/v1/user/advice`, {
     headers: {
       'Content-Type': 'application/json',
+      'X-Custom-Params': JSON.stringify(params),
     },
-    next: { tags: ['advices'] },
+    next: { tags: ['advicesList'] },
   });
   if (!res.ok) {
     throw new Error('Failed to fetch data');

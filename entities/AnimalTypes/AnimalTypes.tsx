@@ -17,8 +17,10 @@ export const AnimalTypes = () => {
   const baseURL = process.env.NEXT_PUBLIC_URL_USER;
   const lang = useCurrentLocale();
 
-  const { data, isLoading } = useSWR(['catogories', { limit: '100', page: '1' }], ([, params]) =>
-    getCategories(params)
+  const { data, isLoading } = useSWR(
+    ['catogories', { limit: '100', page: '1' }],
+    ([, params]) => getCategories(params),
+    { revalidateOnFocus: false, keepPreviousData: true }
   );
 
   const findLanguageIndex = (categories: TOneCategory, locale: string) => {
@@ -33,7 +35,7 @@ export const AnimalTypes = () => {
   };
   const toggleVisibleFilter = () => dispatch(AdvicePetActions.setVasibleFilter());
   return (
-    <PageWrapper as="ul" $gap="16px" $flexWrap="wrap" $position="relative">
+    <PageWrapper as="ul" $gap="16px" $flexWrap="wrap" $position="relative" $justifyContent="center">
       {!isLoading ? (
         data?.models.map(item => (
           <CategoryItem

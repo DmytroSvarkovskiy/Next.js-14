@@ -9,7 +9,7 @@ const Advice = async () => {
   return (
     <>
       <HeroSection text={t('petCareAdvice')} filterBar={<AnimalTypes />} />
-      {/* <ArticleList /> */}
+      <ArticleList />
     </>
   );
 };

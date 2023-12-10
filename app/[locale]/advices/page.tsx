@@ -22,7 +22,7 @@ const Advice = async () => {
     <>
       <HeroSection text={t('petCareAdvice')} filterBar={<AnimalTypes />} />
       <I18nProviderClient locale={locale}>
-        <AdviceFilterBar />
+        {/* <AdviceFilterBar /> */}
         <ArticleList />
       </I18nProviderClient>
     </>

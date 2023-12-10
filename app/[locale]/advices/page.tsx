@@ -5,8 +5,11 @@ import { I18nProviderClient } from '@/locales/client';
 import dynamic from 'next/dynamic';
 import ArticleList from '@/widgets/ArticleList/ArticleList';
 import AnimalTypes from '@/entities/AnimalTypes/AnimalTypes';
-import AdviceFilterBar from '@/widgets/AdviceFilterbar/AdviceFilterBar';
+// import AdviceFilterBar from '@/widgets/AdviceFilterbar/AdviceFilterBar';
 
+const AdviceFilterBar = dynamic(() => import('@/widgets/AdviceFilterbar/AdviceFilterBar'), {
+  ssr: false,
+});
 export const metadata: Metadata = {
   title: 'Advices',
   description: 'Top tips for handling pets',

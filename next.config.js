@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ['next-international', 'international-types'],
-
+  compiler: {
+    styledComponents: true,
+  },
   images: {
     formats: ['image/webp', 'image/avif'],
+
     remotePatterns: [
       {
         protocol: 'https',

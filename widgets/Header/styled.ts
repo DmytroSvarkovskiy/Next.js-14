@@ -58,7 +58,7 @@ export const LinkWrap = styled(Container)<{ $visible: boolean }>`
   @media (min-width: 768px) {
     position: static;
     background-color: transparent;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
     justify-content: end;
     flex-direction: row;

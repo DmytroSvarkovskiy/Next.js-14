@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ['next-international', 'international-types'],
+  reactStrictMode: true,
   compiler: {
     styledComponents: true,
   },

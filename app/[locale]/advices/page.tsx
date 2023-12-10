@@ -2,7 +2,6 @@ import HeroSection from '@/widgets/HeroSection/HeroSection';
 import { getCurrentLocale, getI18n } from '@/locales/server';
 import { Metadata } from 'next';
 import { I18nProviderClient } from '@/locales/client';
-import dynamic from 'next/dynamic';
 import ArticleList from '@/widgets/ArticleList/ArticleList';
 import AnimalTypes from '@/entities/AnimalTypes/AnimalTypes';
 import AdviceFilterBar from '@/widgets/AdviceFilterbar/AdviceFilterBar';
@@ -22,7 +21,7 @@ const Advice = async () => {
     <>
       <HeroSection text={t('petCareAdvice')} filterBar={<AnimalTypes />} />
       <I18nProviderClient locale={locale}>
-        {/* <AdviceFilterBar /> */}
+        <AdviceFilterBar />
         <ArticleList />
       </I18nProviderClient>
     </>

@@ -1,7 +1,8 @@
 'use client';
 import styled from 'styled-components';
-import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
-import { Container } from '@/shared/Container/Container';
+import PageWrapper from '@/shared/PageWrapper/PageWrapper';
+import Container from '@/shared/Container/Container';
+
 export const ArticleListStyled = styled(PageWrapper).attrs({ as: 'ul' })`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

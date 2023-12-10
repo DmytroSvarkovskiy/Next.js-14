@@ -31,7 +31,7 @@ type ContainerProps = {
   $flexWrap?: string;
 };
 
-export const Container = styled.div<ContainerProps>`
+const Container = styled.div<ContainerProps>`
   display: flex;
   gap: ${props => props.$gap};
   height: ${props => props.height};
@@ -76,3 +76,4 @@ Container.defaultProps = {
   $overflow: 'visible ',
   $flexWrap: 'nowrap',
 };
+export default Container;

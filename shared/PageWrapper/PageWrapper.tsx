@@ -1,8 +1,8 @@
 'use client';
 import styled from 'styled-components';
-import { Container } from '../Container/Container';
+import Container from '../Container/Container';
 
-export const PageWrapper = styled(Container)`
+const PageWrapper = styled(Container)`
   width: 100%;
   overflow: hidden;
   padding: 0 10px;
@@ -24,3 +24,4 @@ export const PageWrapper = styled(Container)`
     padding: 0 156px;
   } */
 `;
+export default PageWrapper;

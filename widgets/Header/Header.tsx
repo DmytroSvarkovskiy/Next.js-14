@@ -7,8 +7,9 @@ import { IoMdClose } from 'react-icons/io';
 import { MouseEvent, useState } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { useRouter } from 'next/navigation';
-import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
-import { Container } from '@/shared/Container/Container';
+import PageWrapper from '@/shared/PageWrapper/PageWrapper';
+import Container from '@/shared/Container/Container';
+import dynamic from 'next/dynamic';
 
 export const Header = () => {
   const [visibleMenu, setVisibleMenu] = useState(false);

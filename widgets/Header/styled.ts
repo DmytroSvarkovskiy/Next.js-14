@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Container } from '@/shared/Container/Container';
+import Container from '@/shared/Container/Container';
 
 export const HeaderWrap = styled(Container).attrs({ as: 'header' })`
   background-color: transparent;

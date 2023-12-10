@@ -19,7 +19,7 @@ export const StyledInput = styled.input<TStyledInputProps>`
     background-color: ${({ theme }) => theme.colors.grey};
   }
   &:focus {
-    outline: 1px solid
+    outline: 2px solid
       ${({ theme, $error }) => (!$error ? theme.colors.blue : theme.colors.errorRed)};
   }
 `;

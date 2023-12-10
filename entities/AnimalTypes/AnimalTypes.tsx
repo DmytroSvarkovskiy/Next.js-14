@@ -1,18 +1,18 @@
 'use client';
 import { getCategories } from '@/features/petСare/api/api';
-import Image from 'next/image';
-import { CategoryImage, CategoryItem, FilterWrap } from './styled';
-import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
+import { Button, CategoryImage, CategoryItem, FilterWrap } from './styled';
+import PageWrapper from '@/shared/PageWrapper/PageWrapper';
 import { useCurrentLocale } from '@/locales/client';
 import { TOneCategory } from '@/features/petСare/api/types';
 import { useAppSelector, useAppDispatch } from '@/shared/hooks';
 import { AdvicePetActions } from '@/features';
 import useSWR from 'swr';
 import dynamic from 'next/dynamic';
+import { IoFilterSharp } from 'react-icons/io5';
 
 const Sceleton = dynamic(() => import('@/shared/Sceleton/Sceleton'));
 
-export const AnimalTypes = () => {
+const AnimalTypes = () => {
   const { categories, visibleFilter } = useAppSelector(state => state.advisePetState);
   const dispatch = useAppDispatch();
 
@@ -71,13 +71,14 @@ export const AnimalTypes = () => {
           <Sceleton />
         </>
       )}
-      <FilterWrap width="auto" as="li" $margin="0 " onClick={toggleVisibleFilter}>
-        {visibleFilter ? (
-          <Image alt="filter" src="/filter.svg" width={40} height={40} />
-        ) : (
-          <Image alt="filter" src="/inactiveFilter.svg" width={40} height={40} />
-        )}
-      </FilterWrap>
+      {!isLoading && (
+        <FilterWrap width="auto" as="li" $margin="0 ">
+          <Button $active={!!visibleFilter} onClick={toggleVisibleFilter}>
+            <IoFilterSharp />
+          </Button>
+        </FilterWrap>
+      )}
     </PageWrapper>
   );
 };
+export default AnimalTypes;

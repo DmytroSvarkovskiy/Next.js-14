@@ -1,8 +1,8 @@
 'use client';
-import { Container } from '@/shared/Container/Container';
+import Container from '@/shared/Container/Container';
 import styled from 'styled-components';
 import Image from 'next/image';
-import { PageWrapper } from '@/shared/PageWrapper/PageWrapper';
+import PageWrapper from '@/shared/PageWrapper/PageWrapper';
 
 export const Wrapper = styled(PageWrapper)`
   padding: 0;

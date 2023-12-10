@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ['next-international', 'international-types'],
+
   images: {
     formats: ['image/webp', 'image/avif'],
     remotePatterns: [

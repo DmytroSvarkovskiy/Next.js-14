@@ -1,5 +1,5 @@
 'use client';
-import { Container } from '@/shared/Container/Container';
+import Container from '@/shared/Container/Container';
 import styled from 'styled-components';
 
 export const HeroSectionWrap = styled(Container).attrs({ as: 'section' })`
@@ -15,8 +15,14 @@ export const HeroSectionWrap = styled(Container).attrs({ as: 'section' })`
     padding: 0 0 20px;
   }
   @media (min-width: 1200px) {
+    min-height: 380px;
     padding: 0 0 30px;
   }
+`;
+export const HeadingTitle = styled(Container)`
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
   h1 {
     width: 210px;
     text-align: center;
@@ -31,12 +37,7 @@ export const HeroSectionWrap = styled(Container).attrs({ as: 'section' })`
       width: 648px;
     }
   }
-`;
-export const HeadingTitle = styled(Container)`
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 24px;
   @media (min-width: 768px) {
-    margin-bottom: 34px;
+    margin: 15px 0 50px;
   }
 `;

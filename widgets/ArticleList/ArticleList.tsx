@@ -2,16 +2,15 @@
 import useSWRInfinite from 'swr/infinite';
 import { useAppSelector } from '@/shared/hooks';
 import { getAdvice } from '@/features/petСare/api/api';
-import { Container } from '@/shared/Container/Container';
-import { AdviceCard } from '@/entities/AdviceCard/AdviceCard';
 import { ArticleListStyled, LoadMore } from './styled';
 import { TAdviceResponse } from '@/features/petСare/api/types';
 import { useI18n } from '@/locales/client';
 import ScrollToTop from 'react-scroll-to-top';
 import dynamic from 'next/dynamic';
-const Sceleton = dynamic(() => import('@/shared/Sceleton/Sceleton'));
+import AdviceCard from '@/entities/AdviceCard/AdviceCard';
+import Container from '@/shared/Container/Container';
 
-export const ArticleList = () => {
+const ArticleList = () => {
   const t = useI18n();
   const { limit, categories, subcategory, order, search, tags } = useAppSelector(
     state => state.advisePetState
@@ -35,13 +34,16 @@ export const ArticleList = () => {
 
   const { data, setSize, isLoading } = useSWRInfinite(
     getKey,
-    swrArgs => {
-      const params = swrArgs[1];
-      if (typeof params === 'object') {
+    ([, params]) => {
+      if (params && typeof params === 'object') {
         return getAdvice(params);
       }
     },
-    { revalidateOnFocus: false, keepPreviousData: true }
+    {
+      revalidateOnFocus: false,
+      keepPreviousData: true,
+      // parallel: true,
+    }
   );
 
   const loadMore = () => {
@@ -61,15 +63,7 @@ export const ArticleList = () => {
   return (
     <Container $margin="20px 0 0" $flexDirection="column">
       <ArticleListStyled as="ul" $gap="16px" $flexWrap="wrap">
-        {!isLoading ? (
-          advices?.map((item, i) => item && <AdviceCard item={item} key={`${item._id}` + i} />)
-        ) : (
-          <>
-            <Sceleton width="320" height="260" />
-            <Sceleton width="320" height="260" />
-            <Sceleton width="320" height="260" />
-          </>
-        )}
+        {advices?.map((item, i) => item && <AdviceCard item={item} key={`${item._id}` + i} />)}
       </ArticleListStyled>
       <LoadMore onClick={loadMore} disabled={isAllLoaded}>
         {t('loadMore')}
@@ -78,3 +72,4 @@ export const ArticleList = () => {
     </Container>
   );
 };
+export default ArticleList;

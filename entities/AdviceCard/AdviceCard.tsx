@@ -3,7 +3,7 @@ import { ArticleCardText, AdviceCardStyled, ImageArticle, CategoryTitle } from '
 import Link from 'next/link';
 import { useCurrentLocale } from '@/locales/client';
 
-export const AdviceCard = ({ item }: { item: TOneAdvice }) => {
+const AdviceCard = ({ item }: { item: TOneAdvice }) => {
   const lang = useCurrentLocale();
 
   const formatDate = (dateString: string) => {
@@ -35,9 +35,11 @@ export const AdviceCard = ({ item }: { item: TOneAdvice }) => {
         <ImageArticle alt="preview" src={`${baseURL}/public/advice/${item.images[0]}`} />
         <ArticleCardText>
           <p>{formatDate(item.createdAt)}</p>
-          <h3>{item.title[indexLang].value}</h3>
+          <h2>{item.title[indexLang].value}</h2>
         </ArticleCardText>
       </Link>
     </AdviceCardStyled>
   );
 };
+
+export default AdviceCard;

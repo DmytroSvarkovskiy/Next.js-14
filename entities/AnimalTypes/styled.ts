@@ -1,7 +1,7 @@
 'use client';
 import styled from 'styled-components';
 import Image from 'next/image';
-import { Container } from '@/shared/Container/Container';
+import Container from '@/shared/Container/Container';
 
 export const CategoryImage = styled(Image)`
   object-fit: cover;
@@ -40,5 +40,22 @@ export const FilterWrap = styled(Container).attrs({ as: 'li', width: 'auto' })`
   cursor: pointer;
   @media (min-width: 768px) {
     margin-left: 40px;
+  }
+`;
+export const Button = styled(Container).attrs({ as: 'button' })<{ $active: boolean }>`
+  border: 1px solid ${({ theme, $active }) => (!$active ? theme.colors.white : theme.colors.blue)};
+  outline: none;
+  color: ${({ theme, $active }) => ($active ? theme.colors.blue : theme.colors.text)};
+  width: 40px;
+  height: 40px;
+  padding: 4px 12p;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme, $active }) => ($active ? ' #ebf3ff' : theme.colors.white)};
+  border-radius: 50%;
+  cursor: pointer;
+  svg {
+    width: 20px;
+    height: 20px;
   }
 `;

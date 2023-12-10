@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { Container } from '@/shared/Container/Container';
+import Container from '@/shared/Container/Container';
 export const ArticleWrapper = styled(Container)`
   article {
     font-size: 16px;

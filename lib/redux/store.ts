@@ -1,5 +1,5 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { AdvicePeTReduser } from '@/features';
+import { configureStore } from '@reduxjs/toolkit';
+
 import {
   persistStore,
   persistReducer,
@@ -11,16 +11,17 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { storage } from './customStorage';
+import { AdvicePeTReduser } from '@/features';
 
 const persistConfig = {
   key: 'root',
   storage,
-  // blacklist: ['email'],
+  blacklist: ['limit', 'order', 'search', 'languages'],
 };
 
-const rootReducer = combineReducers({
+const rootReducer = {
   advisePetState: persistReducer(persistConfig, AdvicePeTReduser),
-});
+};
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -32,7 +33,7 @@ export const store = configureStore({
     }),
 });
 
-persistStore(store);
+export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

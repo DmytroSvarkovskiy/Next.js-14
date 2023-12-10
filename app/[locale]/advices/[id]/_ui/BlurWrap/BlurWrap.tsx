@@ -1,5 +1,5 @@
 'use client';
-import { Container } from '@/shared/Container/Container';
+import Container from '@/shared/Container/Container';
 import styled from 'styled-components';
 
 export const BlurWrap = styled(Container)`

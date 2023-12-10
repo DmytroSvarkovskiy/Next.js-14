@@ -82,7 +82,7 @@ export const LinkWrap = styled(Container)<{ $visible: boolean }>`
 export const LogoLink = styled(Link)`
   margin: 0 auto;
   @media (min-width: 768px) {
-    gap: 12px;
+    gap: 10px;
     justify-content: end;
 
     margin: 0 20px 0 0;

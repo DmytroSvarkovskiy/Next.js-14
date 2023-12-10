@@ -5,7 +5,6 @@ import { I18nProviderClient } from '@/locales/client';
 import dynamic from 'next/dynamic';
 import ArticleList from '@/widgets/ArticleList/ArticleList';
 import AnimalTypes from '@/entities/AnimalTypes/AnimalTypes';
-import { Suspense } from 'react';
 
 const AdviceFilterBar = dynamic(() => import('@/widgets/AdviceFilterbar/AdviceFilterBar'), {
   ssr: false,
@@ -19,13 +18,13 @@ const Advice = async () => {
   const t = await getI18n();
   const locale = getCurrentLocale();
   return (
-    <Suspense fallback={null}>
+    <>
       <HeroSection text={t('petCareAdvice')} filterBar={<AnimalTypes />} />
       <I18nProviderClient locale={locale}>
         <AdviceFilterBar />
         <ArticleList />
       </I18nProviderClient>
-    </Suspense>
+    </>
   );
 };
 export default Advice;

@@ -42,8 +42,16 @@ const AdviceFilterBar = () => {
             </IconWrap>
           </SearchWrap>
 
-          <Inputs.SelectInput height="44px" menuPortalTarget={menuPortalTarget || undefined} />
-          <Inputs.SelectInput height="44px" menuPortalTarget={menuPortalTarget || undefined} />
+          <Inputs.SelectInput
+            placeholder={t('selectCategories')}
+            height="44px"
+            menuPortalTarget={menuPortalTarget || undefined}
+          />
+          <Inputs.SelectInput
+            placeholder={t('selectTags')}
+            height="44px"
+            menuPortalTarget={menuPortalTarget || undefined}
+          />
         </InputsWrapper>
       ) : null}
     </PageWrapper>

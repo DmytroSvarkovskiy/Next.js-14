@@ -1,3 +1,5 @@
+import { I18nProviderClient } from '@/locales/client';
+import { getCurrentLocale } from '@/locales/server';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -6,5 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <section>{children}</section>;
+  const locale = getCurrentLocale();
+  return <I18nProviderClient locale={locale}>{children}</I18nProviderClient>;
 }

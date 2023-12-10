@@ -18,7 +18,7 @@ export const selectStylesLang = {
   }),
   indicatorSeparator: (provided: CSSObjectWithLabel) => ({
     ...provided,
-    display: 'none',
+
     backgroundColor: 'transparent',
   }),
   dropdownIndicator: (provided: CSSObjectWithLabel) => ({

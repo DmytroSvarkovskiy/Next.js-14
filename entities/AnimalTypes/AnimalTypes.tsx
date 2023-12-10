@@ -8,7 +8,9 @@ import { TOneCategory } from '@/features/petСare/api/types';
 import { useAppSelector, useAppDispatch } from '@/shared/hooks';
 import { AdvicePetActions } from '@/features';
 import useSWR from 'swr';
-import { Sceleton } from '@/shared/Sceleton/Sceleton';
+import dynamic from 'next/dynamic';
+
+const Sceleton = dynamic(() => import('@/shared/Sceleton/Sceleton'));
 
 export const AnimalTypes = () => {
   const { categories, visibleFilter } = useAppSelector(state => state.advisePetState);
@@ -35,7 +37,14 @@ export const AnimalTypes = () => {
   };
   const toggleVisibleFilter = () => dispatch(AdvicePetActions.setVasibleFilter());
   return (
-    <PageWrapper as="ul" $gap="16px" $flexWrap="wrap" $position="relative" $justifyContent="center">
+    <PageWrapper
+      key="456456"
+      as="ul"
+      $gap="16px"
+      $flexWrap="wrap"
+      $position="relative"
+      $justifyContent="center"
+    >
       {!isLoading ? (
         data?.models.map(item => (
           <CategoryItem

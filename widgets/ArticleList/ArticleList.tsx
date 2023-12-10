@@ -5,9 +5,11 @@ import { getAdvice } from '@/features/petСare/api/api';
 import { Container } from '@/shared/Container/Container';
 import { AdviceCard } from '@/entities/AdviceCard/AdviceCard';
 import { ArticleListStyled, LoadMore } from './styled';
-import { TAdviceParams, TAdviceResponse } from '@/features/petСare/api/types';
+import { TAdviceResponse } from '@/features/petСare/api/types';
 import { useI18n } from '@/locales/client';
 import ScrollToTop from 'react-scroll-to-top';
+import dynamic from 'next/dynamic';
+const Sceleton = dynamic(() => import('@/shared/Sceleton/Sceleton'));
 
 export const ArticleList = () => {
   const t = useI18n();
@@ -31,12 +33,12 @@ export const ArticleList = () => {
     ];
   };
 
-  const { data, setSize } = useSWRInfinite(
+  const { data, setSize, isLoading } = useSWRInfinite(
     getKey,
     swrArgs => {
       const params = swrArgs[1];
       if (typeof params === 'object') {
-        return getAdvice(params as TAdviceParams);
+        return getAdvice(params);
       }
     },
     { revalidateOnFocus: false, keepPreviousData: true }
@@ -59,7 +61,15 @@ export const ArticleList = () => {
   return (
     <Container $margin="20px 0 0" $flexDirection="column">
       <ArticleListStyled as="ul" $gap="16px" $flexWrap="wrap">
-        {advices?.map((item, i) => item && <AdviceCard item={item} key={`${item._id}` + i} />)}
+        {!isLoading ? (
+          advices?.map((item, i) => item && <AdviceCard item={item} key={`${item._id}` + i} />)
+        ) : (
+          <>
+            <Sceleton width="320" height="260" />
+            <Sceleton width="320" height="260" />
+            <Sceleton width="320" height="260" />
+          </>
+        )}
       </ArticleListStyled>
       <LoadMore onClick={loadMore} disabled={isAllLoaded}>
         {t('loadMore')}

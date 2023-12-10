@@ -1,11 +1,12 @@
 import ContentLoader from 'react-content-loader';
+
 type TProps = {
   width?: string;
   height?: string;
 };
-export const Sceleton: React.FC<TProps> = ({ height = '44px', width = '134px' }) => (
+const Sceleton: React.FC<TProps> = ({ height = '44', width = '140' }) => (
   <ContentLoader
-    speed={1}
+    speed={2}
     width={parseInt(width)}
     height={parseInt(height)}
     viewBox={`0 0 ${parseInt(width)} ${parseInt(height)}`}
@@ -15,3 +16,4 @@ export const Sceleton: React.FC<TProps> = ({ height = '44px', width = '134px' })
     <rect x="0" y="0" rx="8" ry="8" width={parseInt(width)} height={parseInt(height)} />
   </ContentLoader>
 );
+export default Sceleton;

@@ -33,6 +33,7 @@ export const ChangeLang = () => {
       components={{ Option, SingleValue }}
       styles={selectStylesLang}
       onChange={onLangChange}
+      instanceId="32"
     />
   );
 };

@@ -26,7 +26,7 @@ const AdviceFilterBar = () => {
   };
   return (
     <PageWrapper>
-      {visibleFilter ? (
+      {visibleFilter && typeof window !== undefined ? (
         <InputsWrapper>
           <SearchWrap>
             <Inputs.Default

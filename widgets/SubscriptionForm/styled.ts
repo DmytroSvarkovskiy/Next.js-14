@@ -5,7 +5,10 @@ import styled from 'styled-components';
 
 export const FormWrapper = styled(Container)`
   background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 8px;
   width: 100%;
+  filter: drop-shadow(0px 8px 16px rgba(132, 151, 164, 0.08))
+    drop-shadow(0px 4px 8px rgba(132, 151, 164, 0.08));
   flex-direction: column;
   @media (min-width: 768px) {
     flex-direction: row;
@@ -47,6 +50,7 @@ export const ImageWrap = styled.div`
   margin: 0;
   display: flex;
   height: 300px;
+  border-radius: 0 8px 8px 0;
   align-items: center;
   justify-content: center;
   min-width: 300px;

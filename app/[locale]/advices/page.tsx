@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 import { getI18n } from '@/locales/server';
-import Content from './_ui/Content/Content';
+import { Content } from './_ui/Content/Content';
 
 export const metadata: Metadata = {
   title: 'Advices',

@@ -8,39 +8,72 @@ import { BsSearch } from 'react-icons/bs';
 import { IconWrap, InputsWrapper, SearchWrap, selectStyles } from './styled';
 import { useCurrentLocale, useI18n } from '@/locales/client';
 import useSWR from 'swr';
-import { getSubCategories } from '@/features/petСare/api/api';
-import { Option } from './selectComponents';
+import { getSubCategories, getTags } from '@/features/petСare/api/api';
+import { Option, OptionTags } from './selectComponents';
 import Select from 'react-select';
 
 const AdviceFilterBar = () => {
   const t = useI18n();
   const locale = useCurrentLocale();
   const dispatch = useAppDispatch();
-  const { visibleFilter, search, categories } = useAppSelector(state => state.advisePetState);
+  const { visibleFilter, search, categories, subcategory, tags } = useAppSelector(
+    state => state.advisePetState
+  );
   const [menuPortalTarget, setMenuPortalTarget] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     typeof window !== 'undefined' && setMenuPortalTarget(document.body);
   }, []);
 
-  const { data } = useSWR(
-    ['getSubcategories', { category: categories || undefined, limit: '100', page: '1' }],
-    ([, params]) => getSubCategories(params)
+  const { data: subCategory } = useSWR(
+    categories
+      ? ['getSubcategories', { category: categories || undefined, limit: '100', page: '1' }]
+      : null,
+    ([, params]) => getSubCategories(params),
+    { revalidateOnFocus: false }
   );
+
+  const { data: tagsData } = useSWR(
+    ['tags', { limit: '120', page: '1' }],
+    ([, params]) => getTags(params),
+    { revalidateOnFocus: false }
+  );
+
+  const indeLangoptions =
+    tagsData?.models.findIndex(item => item.title.find(item => item.lang === locale)) &&
+    tagsData?.models.findIndex(item => item.title.find(item => item.lang === locale)) !== -1
+      ? tagsData?.models.findIndex(item => item.title.find(item => item.lang === locale))
+      : 0;
   const subCategoryIndexLang =
-    data?.models?.findIndex(item => item.title.find(el => el.lang === locale)) &&
-    data?.models?.findIndex(item => item.title.find(el => el.lang === locale)) !== -1
-      ? data?.models?.findIndex(item => item.title.find(el => el.lang === locale))
+    subCategory?.models?.findIndex(item => item.title.find(el => el.lang === locale)) &&
+    subCategory?.models?.findIndex(item => item.title.find(el => el.lang === locale)) !== -1
+      ? subCategory?.models?.findIndex(item => item.title.find(el => el.lang === locale))
       : 0;
 
-  const optionsSubCategory = data?.models.map(item => ({
+  const optionsSubCategory = subCategory?.models.map(item => ({
     label: item.title[subCategoryIndexLang].value,
+    value: item._id,
+  }));
+
+  const optionsTags = tagsData?.models.map(item => ({
+    label: item.title[indeLangoptions].value,
     value: item._id,
   }));
 
   const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(AdvicePetActions.setSearch(e.target?.value));
   };
+
+  const handleSelectChange = (newValue: unknown, input: 'subcategory' | 'tags') => {
+    if (input === 'subcategory') {
+      if (!newValue) {
+        dispatch(AdvicePetActions.toggleSubcategory(''));
+      }
+    } else if (input === 'tags') {
+      dispatch(AdvicePetActions.toggleTags(''));
+    }
+  };
+
   return (
     <PageWrapper>
       {visibleFilter && typeof window !== undefined ? (
@@ -67,12 +100,36 @@ const AdviceFilterBar = () => {
             menuPortalTarget={menuPortalTarget || undefined}
             options={optionsSubCategory}
             noOptionsMessage={() => t('noOptionsAvailable')}
+            isClearable
+            onChange={value => handleSelectChange(value, 'subcategory')}
+            value={
+              subcategory.length
+                ? {
+                    value: subcategory.length + '',
+                    label: `${t('selectCategories')} ${
+                      subcategory.length && `(${subcategory.length})`
+                    }`,
+                  }
+                : undefined
+            }
           />
-          <Inputs.SelectInput
+          <Select
+            components={{ Option: OptionTags }}
+            styles={selectStyles}
             placeholder={t('selectTags')}
-            height="44px"
             menuPortalTarget={menuPortalTarget || undefined}
-            // noOptionsMessage={() => t('noOptionsAvailable')}
+            options={optionsTags}
+            noOptionsMessage={() => t('noOptionsAvailable')}
+            isClearable
+            onChange={value => handleSelectChange(value, 'tags')}
+            value={
+              tags.length
+                ? {
+                    value: tags.length + '',
+                    label: `${t('selectTags')} ${tags.length && `(${tags.length})`}`,
+                  }
+                : undefined
+            }
           />
         </InputsWrapper>
       ) : null}

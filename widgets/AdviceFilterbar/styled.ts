@@ -36,11 +36,9 @@ export const SearchWrap = styled(Container)`
 export const OptionItem = styled(Container)`
   gap: 8px;
   cursor: pointer;
+  padding: 8px;
   &:not(:last-child) {
     margin-bottom: 8px;
-  }
-  &:last-child {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
   }
 `;
 

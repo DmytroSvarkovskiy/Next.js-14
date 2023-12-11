@@ -6,7 +6,7 @@ const initialState: TInitialState = {
   order: 1,
   search: '',
   categories: null,
-  tags: null,
+  tags: [],
   languages: '',
   visibleFilter: false,
   subcategory: [],
@@ -25,8 +25,21 @@ export const AdvicePetSlice = createSlice({
     setCategory: (state, { payload }: PayloadAction<string | null>) => {
       state.categories = payload;
     },
-    setTags: (state, { payload }: PayloadAction<string[] | null>) => {
-      state.tags = payload;
+    toggleTags: (state, { payload }: PayloadAction<string>) => {
+      if (payload) {
+        if (state.tags === null) {
+          state.tags = [];
+        }
+        const isValueInState = state.tags.includes(payload);
+
+        if (isValueInState) {
+          state.tags = state.tags.filter(item => item !== payload);
+        } else {
+          state.tags = [...state.tags, payload];
+        }
+      } else {
+        state.tags = [];
+      }
     },
     setLanguages: (state, { payload }: PayloadAction<string>) => {
       state.languages = payload;

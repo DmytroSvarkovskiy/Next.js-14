@@ -103,11 +103,11 @@ const AdviceFilterBar = () => {
             isClearable
             onChange={value => handleSelectChange(value, 'subcategory')}
             value={
-              subcategory.length
+              subcategory?.length
                 ? {
                     value: subcategory.length + '',
                     label: `${t('selectCategories')} ${
-                      subcategory.length && `(${subcategory.length})`
+                      subcategory?.length && `(${subcategory?.length})`
                     }`,
                   }
                 : undefined
@@ -123,10 +123,10 @@ const AdviceFilterBar = () => {
             isClearable
             onChange={value => handleSelectChange(value, 'tags')}
             value={
-              tags.length
+              tags?.length
                 ? {
                     value: tags.length + '',
-                    label: `${t('selectTags')} ${tags.length && `(${tags.length})`}`,
+                    label: `${t('selectTags')} ${tags?.length && `(${tags?.length})`}`,
                   }
                 : undefined
             }

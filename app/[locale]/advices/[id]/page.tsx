@@ -45,6 +45,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <PageWrapper $alignItems="flex-start" $justifyContent="flex-start" $flexDirection="column">
           <Breadcrumbs title={data.title[indexLang].value} />
           <ShareCard data={data} />
+
           <Article data={data} />
         </PageWrapper>
       </I18nProviderClient>

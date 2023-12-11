@@ -20,10 +20,18 @@ const AdviceFilterBar = () => {
     state => state.advisePetState
   );
   const [menuPortalTarget, setMenuPortalTarget] = useState<HTMLElement | null>(null);
+  const [isReady, setIsReady] = useState(false);
+  const persistedStateLoaded = useAppSelector(state => state.advisePetState._persist.rehydrated);
 
   useEffect(() => {
     typeof window !== 'undefined' && setMenuPortalTarget(document.body);
   }, []);
+
+  useEffect(() => {
+    if (persistedStateLoaded) {
+      setIsReady(true);
+    }
+  }, [persistedStateLoaded]);
 
   const { data: subCategory } = useSWR(
     categories
@@ -77,7 +85,7 @@ const AdviceFilterBar = () => {
 
   return (
     <PageWrapper>
-      {visibleFilter && typeof window !== undefined ? (
+      {visibleFilter && isReady && (
         <InputsWrapper>
           <SearchWrap>
             <Inputs.Default
@@ -134,7 +142,7 @@ const AdviceFilterBar = () => {
             }
           />
         </InputsWrapper>
-      ) : null}
+      )}
     </PageWrapper>
   );
 };

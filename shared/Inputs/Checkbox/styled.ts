@@ -3,8 +3,10 @@ export const CheckBoxWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  min-width: 18px;
+  max-width: 18px;
+  min-height: 18px;
+  max-height: 18px;
   border: ${({ theme }) => theme.borderInputs};
   border-radius: 3px;
   cursor: pointer;

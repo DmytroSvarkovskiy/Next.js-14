@@ -1,7 +1,11 @@
 import { Metadata } from 'next';
 
 import { getI18n } from '@/locales/server';
-import { Content } from './_ui/Content/Content';
+import HeroSection from '@/widgets/HeroSection/HeroSection';
+import AnimalTypes from '@/entities/AnimalTypes/AnimalTypes';
+import AdviceFilterBar from '@/widgets/AdviceFilterbar/AdviceFilterBar';
+import ArticleList from '@/widgets/ArticleList/ArticleList';
+import { SubscriptionForm } from '@/widgets/SubscriptionForm/SubscriptionForm';
 
 export const metadata: Metadata = {
   title: 'Advices',
@@ -13,7 +17,11 @@ const Advice = async () => {
 
   return (
     <>
-      <Content />
+      <HeroSection text={t('petCareAdvice')} filterBar={<AnimalTypes />} />
+
+      <AdviceFilterBar />
+      <ArticleList />
+      <SubscriptionForm />
     </>
   );
 };

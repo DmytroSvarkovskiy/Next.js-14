@@ -45,4 +45,5 @@ export default {
   puppies: 'Цуценята',
   noOptionsAvailable: 'Немає доступних опцій',
   noContentAvailable: 'Немає доступного вмісту',
+  thisFieldIsRequired: "Це поле є обов'язковим",
 } as const;

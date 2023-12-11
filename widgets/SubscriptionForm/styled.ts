@@ -1,17 +1,24 @@
 'use client';
 import Container from '@/shared/Container/Container';
+import { CSSObjectWithLabel, ControlProps, OptionProps } from 'react-select';
 import styled from 'styled-components';
 
 export const FormWrapper = styled(Container)`
   margin: 0;
   background-color: ${({ theme }) => theme.colors.white};
   width: 100%;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
-export const FormContainer = styled(Container).attrs({ as: 'form' })`
+export const FormContainer = styled.form`
+  display: flex;
   margin: 0;
   flex-direction: column;
-  padding: 40px 50px 50px;
+  padding: 20px;
+
   h3 {
     font-size: 25px;
     font-weight: 500;
@@ -21,11 +28,14 @@ export const FormContainer = styled(Container).attrs({ as: 'form' })`
     font-size: 16px;
     line-height: 1.5;
   }
+  @media (min-width: 768px) {
+    width: 400px;
+  }
   @media (min-width: 1200px) {
-    padding: 88px 72px 72px;
-    width: 576px;
+    padding: 88px 70px 70px;
+    width: 648px;
     h3 {
-      font-size: 36px;
+      font-size: 33px;
       font-weight: 500;
       margin-bottom: 8px;
     }
@@ -34,11 +44,124 @@ export const FormContainer = styled(Container).attrs({ as: 'form' })`
     }
   }
 `;
-export const ImageWrap = styled(Container)`
+export const ImageWrap = styled.div`
   margin: 0;
-  height: 609px;
+  display: flex;
+  height: 300px;
   align-items: center;
   justify-content: center;
-  width: 480px;
-  background: linear-gradient(to right, rgba(255, 204, 247, 0.5), rgba(197, 222, 255, 0.5));
+  min-width: 300px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.3) 10%,
+    rgba(255, 204, 247, 0.3) 50%,
+    rgba(197, 222, 255, 0.3) 100%
+  );
+  @media (min-width: 425px) {
+    width: 405px;
+  }
+
+  @media (min-width: 768px) {
+    width: 480px;
+    height: 500px;
+  }
+  @media (min-width: 1200px) {
+    height: 609px;
+  }
+  img {
+    width: 300px;
+  }
 `;
+export const InputsWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 24px 0 32px;
+  @media (min-width: 1200px) {
+    gap: 22px;
+  }
+`;
+export const SelectWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 20px;
+  @media (min-width: 425px) {
+    width: 365px;
+  }
+  @media (min-width: 768px) {
+    width: 360px;
+  }
+  @media (min-width: 1200px) {
+    width: 508px;
+  }
+`;
+export const selectStyles = {
+  valueContainer: (provided: CSSObjectWithLabel) => ({
+    ...provided,
+    padding: '0px',
+    height: '66px',
+    width: '100%',
+    '@media(min-width:768px)': {
+      height: '56px',
+    },
+  }),
+
+  control: (
+    provided: CSSObjectWithLabel,
+    state: ControlProps<{ label: string; value: string }>
+  ) => ({
+    ...provided,
+    height: '66px',
+    '@media(min-width:768px)': {
+      height: '56px',
+    },
+
+    width: '100%',
+    padding: ' 0 4px',
+    borderRadius: '8px',
+    boxShadow: state.isFocused || state.menuIsOpen ? '0 0 0 1px #0086BF' : undefined,
+    border: state.isFocused || state.menuIsOpen ? '1px solid #0086BF' : undefined,
+    '&:hover': {
+      border: state.isFocused || state.menuIsOpen ? '1px solid #0086BF' : undefined,
+    },
+  }),
+
+  indicatorSeparator: (provided: CSSObjectWithLabel) => ({
+    ...provided,
+    display: 'none',
+  }),
+
+  dropdownIndicator: (provided: CSSObjectWithLabel) => ({
+    ...provided,
+    padding: '0',
+    display: 'flex',
+    color: '#0086BF',
+  }),
+
+  menu: (base: CSSObjectWithLabel) => ({
+    ...base,
+    width: '100%',
+    overflow: 'auto',
+  }),
+
+  option: (provided: CSSObjectWithLabel, state: OptionProps<{ label: string; value: string }>) => ({
+    ...provided,
+    backgroundColor: state.isSelected
+      ? '#646369'
+      : state.isFocused
+      ? '#9DADBC'
+      : provided.backgroundColor,
+    color: state.isSelected || state.isFocused ? 'white' : provided.color,
+    ':active': {
+      backgroundColor: state.isSelected ? '#646369' : provided.backgroundColor,
+      color: state.isSelected ? 'white' : provided.color,
+    },
+  }),
+
+  singleValue: (provided: CSSObjectWithLabel) => ({
+    ...provided,
+    color: '#646369',
+  }),
+};

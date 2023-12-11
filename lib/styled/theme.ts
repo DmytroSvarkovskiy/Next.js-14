@@ -5,7 +5,7 @@ export const theme = {
     heroGradient: 'linear-gradient(180deg, #C5DEFF 0%, #C5DEFF 100%)',
     mainBackground: '#F7F7F8',
     white: '#ffffff',
-    errorRed: '"#F91D1D',
+    errorRed: '#F91D1D',
     grey: '#9DADBC',
   },
   borderInputs: '0.5px solid #9DADBC',

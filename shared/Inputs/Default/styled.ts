@@ -1,3 +1,4 @@
+import { theme } from './../../../lib/styled/theme';
 import styled from 'styled-components';
 
 import { TStyledLabelProps, TStyledInputProps } from './types';
@@ -8,7 +9,8 @@ export const StyledInput = styled.input<TStyledInputProps>`
   display: block;
   border: none;
   padding: ${({ $padding }) => $padding};
-  outline: ${({ theme }) => theme.borderInputs};
+  outline: ${({ theme, $error }) =>
+    !$error ? theme.borderInputs : `2px solid ${theme.colors.errorRed}`};
   height: ${({ height }) => height};
   width: ${({ width }) => width};
   font-size: 16px;
@@ -54,6 +56,6 @@ export const Label = styled.label<TStyledLabelProps>`
 export const ErrorMessage = styled.div`
   position: absolute;
   font-size: 12px;
-  bottom: -16px;
+  bottom: -15px;
   color: ${({ theme }) => theme.colors.errorRed};
 `;

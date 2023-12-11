@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import Container from '../Container/Container';
 
-const PageWrapper = styled(Container)`
+const PageWrapper = styled(Container).attrs({ key: 'e64yhydh' })`
   width: 100%;
   overflow: hidden;
   padding: 0 10px;

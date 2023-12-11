@@ -44,4 +44,5 @@ export default {
   puppies: 'Puppies',
   noOptionsAvailable: 'No options available',
   noContentAvailable: 'No content available',
+  thisFieldIsRequired: 'This field is required',
 } as const;

@@ -16,6 +16,7 @@ export const SelectInput = ({
   isClearable = false,
   menuPortalTarget,
   noOptionsMessage,
+  required,
 }: TSelectProps) => {
   const selectStyles = {
     valueContainer: (provided: CSSObjectWithLabel) => ({
@@ -87,6 +88,7 @@ export const SelectInput = ({
     <SelectWrap width={width} height={height}>
       {label && <p>{label}</p>}
       <Select
+        required={required}
         menuPortalTarget={menuPortalTarget}
         options={options}
         noOptionsMessage={() => noOptionsMessage || ''}

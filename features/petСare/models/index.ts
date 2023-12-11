@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit/react';
 
 const initialState: TInitialState = {
   limit: '9',
-  order: 1,
+  order: -1,
   search: '',
   categories: null,
   tags: [],

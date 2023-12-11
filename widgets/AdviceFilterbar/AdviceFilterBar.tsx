@@ -5,7 +5,7 @@ import PageWrapper from '@/shared/PageWrapper/PageWrapper';
 import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
-import { IconWrap, InputsWrapper, SearchWrap, selectStyles } from './styled';
+import { InputsWrapper, SearchWrap, selectStyles } from './styled';
 import { useCurrentLocale, useI18n } from '@/locales/client';
 import useSWR from 'swr';
 import { getSubCategories, getTags } from '@/features/petСare/api/api';
@@ -87,10 +87,11 @@ const AdviceFilterBar = () => {
               value={search}
               onChange={onSearch}
               height="41px"
+              key={'rerdf65676'}
             />
-            <IconWrap>
+            <div className="iconWrap">
               <BsSearch />
-            </IconWrap>
+            </div>
           </SearchWrap>
 
           <Select

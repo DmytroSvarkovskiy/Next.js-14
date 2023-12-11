@@ -12,6 +12,7 @@ export type TSelectProps = {
   isClearable?: boolean;
   menuPortalTarget?: HTMLElement;
   noOptionsMessage?: string;
+  required?: boolean;
 };
 export type TStyledSelectProps = { width?: string; height?: string };
 export type TProps = {

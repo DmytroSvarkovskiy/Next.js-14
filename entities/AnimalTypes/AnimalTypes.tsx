@@ -35,7 +35,7 @@ const AnimalTypes = () => {
   const toAddCategories = (id: string) => {
     dispatch(AdvicePetActions.setCategory(id === categories ? null : id));
   };
-  const toggleVisibleFilter = () => dispatch(AdvicePetActions.setVasibleFilter());
+  const toggleVisibleFilter = () => dispatch(AdvicePetActions.setVisibleFilter());
   return (
     <PageWrapper
       key="456456"

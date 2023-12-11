@@ -7,4 +7,5 @@ export type TInitialState = {
   tags: string[];
   languages: string;
   visibleFilter: boolean;
+  amISubscribed: boolean;
 };

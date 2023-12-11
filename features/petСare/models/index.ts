@@ -10,6 +10,7 @@ const initialState: TInitialState = {
   languages: '',
   visibleFilter: false,
   subcategory: [],
+  amISubscribed: false,
 };
 
 export const AdvicePetSlice = createSlice({
@@ -21,6 +22,9 @@ export const AdvicePetSlice = createSlice({
     },
     setSearch: (state, { payload }: PayloadAction<string>) => {
       state.search = payload;
+    },
+    changeSubscribed: (state, { payload }: PayloadAction<boolean>) => {
+      state.amISubscribed = payload;
     },
     setCategory: (state, { payload }: PayloadAction<string | null>) => {
       state.categories = payload;
@@ -47,7 +51,7 @@ export const AdvicePetSlice = createSlice({
     setLanguages: (state, { payload }: PayloadAction<string>) => {
       state.languages = payload;
     },
-    setVasibleFilter: state => {
+    setVisibleFilter: state => {
       state.visibleFilter = !state.visibleFilter;
     },
     toggleSubcategory: (state, { payload }: PayloadAction<string>) => {

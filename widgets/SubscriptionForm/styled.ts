@@ -4,7 +4,6 @@ import { CSSObjectWithLabel, ControlProps, OptionProps } from 'react-select';
 import styled from 'styled-components';
 
 export const FormWrapper = styled(Container)`
-  margin: 0;
   background-color: ${({ theme }) => theme.colors.white};
   width: 100%;
   flex-direction: column;
@@ -170,5 +169,15 @@ export const selectStyles = {
 export const TextLink = styled.span`
   a {
     color: ${({ theme }) => theme.colors.blue};
+  }
+`;
+export const HeaderSuccess = styled.h3`
+  font-size: 36px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 20%;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 608px;
   }
 `;

@@ -88,6 +88,7 @@ export const SubscriptionForm = () => {
                 name="categories"
                 render={({ field }) => (
                   <Select
+                    isClearable={false}
                     isMulti
                     placeholder={t('typeOfPets')}
                     value={

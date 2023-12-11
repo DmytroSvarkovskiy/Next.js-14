@@ -101,7 +101,7 @@ export const selectStyles = {
   valueContainer: (provided: CSSObjectWithLabel) => ({
     ...provided,
     padding: '0px',
-    height: '66px',
+    height: '76px',
     width: '100%',
     '@media(min-width:768px)': {
       height: '56px',
@@ -113,7 +113,7 @@ export const selectStyles = {
     state: ControlProps<{ label: string; value: string }>
   ) => ({
     ...provided,
-    height: '66px',
+    height: '76px',
     '@media(min-width:768px)': {
       height: '56px',
     },

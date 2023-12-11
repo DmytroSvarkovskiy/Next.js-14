@@ -7,6 +7,8 @@ import {
   TOneAdvice,
   TSubCategoryParams,
   TSubCategoryResponse,
+  TSubscriptionParams,
+  TTagsResponse,
 } from './types';
 
 const baseURL = process.env.NEXT_PUBLIC_URL_USER;
@@ -33,21 +35,21 @@ export const getCurrentAdvice = async (id: string): Promise<TOneAdvice> => {
   return data;
 };
 
-export const getAdvices = async (params: TAdviceParams): Promise<TAdviceResponse> => {
-  const res = await fetch(`${baseURL}/ads/api/v1/user/advice`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Custom-Params': JSON.stringify(params),
-    },
-    next: { tags: ['advicesList'] },
-  });
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  const data: TAdviceResponse = await res.json();
+// export const getAdvices = async (params: TAdviceParams): Promise<TAdviceResponse> => {
+//   const res = await fetch(`${baseURL}/ads/api/v1/user/advice`, {
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'X-Custom-Params': JSON.stringify(params),
+//     },
+//     next: { tags: ['advicesList'] },
+//   });
+//   if (!res.ok) {
+//     throw new Error('Failed to fetch data');
+//   }
+//   const data: TAdviceResponse = await res.json();
 
-  return data;
-};
+//   return data;
+// };
 
 export const getCategories = async (params: TCategoryParams) => {
   const query = new URLSearchParams(params).toString();
@@ -83,7 +85,7 @@ export const getSubCategories = async (params: TSubCategoryParams) => {
 
 export const getTags = async (params: TCategoryParams) => {
   const query = new URLSearchParams(params).toString();
-  const res = await fetch(`${baseURL}/ads/api/v1/admin/tags?${query}`, {
+  const res = await fetch(`${baseURL}/ads/api/v1/user/tags?${query}`, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -92,7 +94,21 @@ export const getTags = async (params: TCategoryParams) => {
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
-  const data: TSubCategoryResponse = await res.json();
+  const data: TTagsResponse = await res.json();
 
   return data;
+};
+
+export const createASubscription = async (data: TSubscriptionParams) => {
+  const res = await fetch(`${baseURL}/user/api/v1/mailing-list`, {
+    body: JSON.stringify(data),
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    next: { tags: ['subscription'] },
+  });
+  if (!res.ok) {
+    throw new Error('Failed to post data');
+  }
 };

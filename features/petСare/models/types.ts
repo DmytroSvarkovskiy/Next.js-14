@@ -3,7 +3,7 @@ export type TInitialState = {
   order: number;
   search: string;
   categories: string | null;
-  subcategory: string[] | null;
+  subcategory: string[];
   tags: string[] | null;
   languages: string;
   visibleFilter: boolean;

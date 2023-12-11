@@ -27,11 +27,6 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-// export const metadata: Metadata = {
-//   title: 'Advices',
-//   description: 'Top tips for handling pets',
-// };
-
 const Page = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
 

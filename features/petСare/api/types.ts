@@ -88,7 +88,7 @@ export type TCategoriesResponse = {
 };
 
 export type TOneSubcategory = {
-  id: string;
+  _id: string;
   title: {
     value: string;
     lang: string;
@@ -123,4 +123,14 @@ export type TOneTag = {
     _id: string;
   }[];
   __v: number;
+};
+export type TTagsResponse = {
+  models: TOneTag[];
+  totalCount: number;
+};
+
+export type TSubscriptionParams = {
+  name: string;
+  email: string;
+  tags: string[];
 };

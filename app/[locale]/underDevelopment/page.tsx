@@ -3,16 +3,14 @@ import PageWrapper from '@/shared/PageWrapper/PageWrapper';
 import { I18nProviderClient } from '@/locales/client';
 import { getCurrentLocale } from '@/locales/server';
 
-export default async function Contacts() {
+export default async function UnderdDevelopment() {
   const locale = getCurrentLocale();
-
   return (
     <>
       <I18nProviderClient locale={locale}>
-        <HeroSection text="contacts" />{' '}
+        <HeroSection text="underDevelopment" />
       </I18nProviderClient>
-
-      <PageWrapper>contacts</PageWrapper>
+      <PageWrapper>underdDevelopment</PageWrapper>
     </>
   );
 }

@@ -6,7 +6,6 @@ import { ArticleListStyled, LoadMore } from './styled';
 import { TAdviceResponse } from '@/features/petСare/api/types';
 import { useI18n } from '@/locales/client';
 import ScrollToTop from 'react-scroll-to-top';
-import dynamic from 'next/dynamic';
 import AdviceCard from '@/entities/AdviceCard/AdviceCard';
 import Container from '@/shared/Container/Container';
 

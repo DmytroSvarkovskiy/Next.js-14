@@ -9,7 +9,7 @@ const initialState: TInitialState = {
   tags: null,
   languages: '',
   visibleFilter: false,
-  subcategory: null,
+  subcategory: [],
 };
 
 export const AdvicePetSlice = createSlice({
@@ -34,8 +34,15 @@ export const AdvicePetSlice = createSlice({
     setVasibleFilter: state => {
       state.visibleFilter = !state.visibleFilter;
     },
-    setSubcategory: (state, { payload }: PayloadAction<string[] | null>) => {
-      state.subcategory = payload;
+    toggleSubcategory: (state, { payload }: PayloadAction<string>) => {
+      const isValueInState = state.subcategory.includes(payload);
+      if (payload) {
+        if (isValueInState) {
+          state.subcategory.filter(item => item !== payload);
+        } else {
+          state.subcategory = [...state.subcategory, payload];
+        }
+      } else state.subcategory = [];
     },
   },
 });

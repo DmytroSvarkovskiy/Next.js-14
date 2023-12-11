@@ -1,7 +1,8 @@
+'use client';
 import HeroSection from '@/widgets/HeroSection/HeroSection';
-import { getCurrentLocale, getI18n } from '@/locales/server';
+
 import { Metadata } from 'next';
-import { I18nProviderClient } from '@/locales/client';
+import { useI18n } from '@/locales/client';
 import dynamic from 'next/dynamic';
 import ArticleList from '@/widgets/ArticleList/ArticleList';
 import AnimalTypes from '@/entities/AnimalTypes/AnimalTypes';
@@ -14,16 +15,15 @@ export const metadata: Metadata = {
   description: 'Top tips for handling pets',
 };
 
-const Advice = async () => {
-  const t = await getI18n();
-  const locale = getCurrentLocale();
+const Advice = () => {
+  const t = useI18n();
+
   return (
     <>
       <HeroSection text={t('petCareAdvice')} filterBar={<AnimalTypes />} />
-      <I18nProviderClient locale={locale}>
-        <AdviceFilterBar />
-        <ArticleList />
-      </I18nProviderClient>
+
+      <AdviceFilterBar />
+      <ArticleList />
     </>
   );
 };

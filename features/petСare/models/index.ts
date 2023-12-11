@@ -35,14 +35,21 @@ export const AdvicePetSlice = createSlice({
       state.visibleFilter = !state.visibleFilter;
     },
     toggleSubcategory: (state, { payload }: PayloadAction<string>) => {
-      const isValueInState = state.subcategory.includes(payload);
       if (payload) {
+        if (state.subcategory === null) {
+          state.subcategory = [];
+        }
+
+        const isValueInState = state.subcategory.includes(payload);
+
         if (isValueInState) {
-          state.subcategory.filter(item => item !== payload);
+          state.subcategory = state.subcategory.filter(item => item !== payload);
         } else {
           state.subcategory = [...state.subcategory, payload];
         }
-      } else state.subcategory = [];
+      } else {
+        state.subcategory = [];
+      }
     },
   },
 });

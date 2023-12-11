@@ -1,6 +1,6 @@
 'use client';
 import Container from '@/shared/Container/Container';
-import { CSSObjectWithLabel, ControlProps } from 'react-select';
+import { CSSObjectWithLabel, ControlProps, OptionProps } from 'react-select';
 import styled from 'styled-components';
 export const IconWrap = styled.div`
   position: absolute;
@@ -48,37 +48,60 @@ export const selectStyles = {
   valueContainer: (provided: CSSObjectWithLabel) => ({
     ...provided,
     padding: '0px',
-    display: 'flex',
-    width: '140px',
+    height: '44px',
+    width: '232px',
   }),
+
   control: (
     provided: CSSObjectWithLabel,
     state: ControlProps<{ label: string; value: string }>
   ) => ({
     ...provided,
-    height: '43px',
-    padding: '5px',
+    height: '44px',
+    width: '232px',
+    padding: ' 0 4px',
     borderRadius: '8px',
-    boxShadow: state.isFocused || state.menuIsOpen ? '0 0 0 1px #FD835D' : undefined,
-    border: state.isFocused || state.menuIsOpen ? '1px solid #FD835D' : undefined,
+    boxShadow: state.isFocused || state.menuIsOpen ? '0 0 0 1px #0086BF' : undefined,
+    border: state.isFocused || state.menuIsOpen ? '1px solid #0086BF' : undefined,
     '&:hover': {
-      border: state.isFocused || state.menuIsOpen ? '1px solid #FD835D' : undefined,
+      border: state.isFocused || state.menuIsOpen ? '1px solid #0086BF' : undefined,
     },
   }),
+
   indicatorSeparator: (provided: CSSObjectWithLabel) => ({
     ...provided,
     display: 'none',
   }),
+
   dropdownIndicator: (provided: CSSObjectWithLabel) => ({
     ...provided,
     padding: '0',
     display: 'flex',
-    color: '#FD835D',
+    color: '#0086BF',
   }),
+
   menu: (base: CSSObjectWithLabel) => ({
     ...base,
-    padding: '4px',
+    width: '232px',
     overflow: 'auto',
-    width: '200px',
+  }),
+
+  option: (provided: CSSObjectWithLabel, state: OptionProps<{ label: string; value: string }>) => ({
+    ...provided,
+    backgroundColor: state.isSelected
+      ? '#646369'
+      : state.isFocused
+      ? '#9DADBC'
+      : provided.backgroundColor,
+    color: state.isSelected || state.isFocused ? 'white' : provided.color,
+    ':active': {
+      backgroundColor: state.isSelected ? '#646369' : provided.backgroundColor,
+      color: state.isSelected ? 'white' : provided.color,
+    },
+  }),
+
+  singleValue: (provided: CSSObjectWithLabel) => ({
+    ...provided,
+    color: '#646369',
   }),
 };

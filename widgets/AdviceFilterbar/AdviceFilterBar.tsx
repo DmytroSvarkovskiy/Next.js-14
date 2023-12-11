@@ -64,14 +64,15 @@ const AdviceFilterBar = () => {
             components={{ Option }}
             styles={selectStyles}
             placeholder={t('selectCategories')}
-            // height="44px"
             menuPortalTarget={menuPortalTarget || undefined}
             options={optionsSubCategory}
+            noOptionsMessage={() => t('noOptionsAvailable')}
           />
           <Inputs.SelectInput
             placeholder={t('selectTags')}
             height="44px"
             menuPortalTarget={menuPortalTarget || undefined}
+            // noOptionsMessage={() => t('noOptionsAvailable')}
           />
         </InputsWrapper>
       ) : null}

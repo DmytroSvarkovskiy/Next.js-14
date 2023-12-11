@@ -18,7 +18,7 @@ export const Option: React.FC<OptionProps<TOtionStatus, false>> = props => {
         dispatch(AdvicePetActions.toggleSubcategory(props.data.value));
       }}
     >
-      <Inputs.Checkbox value={isChecked} onChange={() => {}} />
+      <Inputs.Checkbox value={!!isChecked} onChange={() => {}} />
       <p>{props.data.label}</p>
     </OptionItem>
   );

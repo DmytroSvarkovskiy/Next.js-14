@@ -19,8 +19,12 @@ export const LoadMore = styled(Container).attrs({ as: 'button' })`
   cursor: pointer;
   border-radius: 100px;
   border: none;
-  margin: 20px auto 120px;
+  margin: 20px auto 20px;
   &[disabled] {
     background-color: ${({ theme }) => theme.colors.grey};
+  }
+  @media (min-width: 1200px) {
+    padding: 12px 44px;
+    margin: 20px auto 120px;
   }
 `;

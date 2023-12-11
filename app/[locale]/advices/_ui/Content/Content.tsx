@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import ArticleList from '@/widgets/ArticleList/ArticleList';
 import AnimalTypes from '@/entities/AnimalTypes/AnimalTypes';
 import { useI18n } from '@/locales/client';
+import { SubscriptionForm } from '@/widgets/SubscriptionForm/SubscriptionForm';
 
 const AdviceFilterBar = dynamic(() => import('@/widgets/AdviceFilterbar/AdviceFilterBar'), {
   ssr: false,
@@ -18,6 +19,7 @@ export const Content = () => {
 
       <AdviceFilterBar />
       <ArticleList />
+      <SubscriptionForm />
     </>
   );
 };

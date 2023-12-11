@@ -39,26 +39,27 @@ const AdviceFilterBar = () => {
     { revalidateOnFocus: false }
   );
 
-  const indeLangoptions =
-    tagsData?.models.findIndex(item => item.title.find(item => item.lang === locale)) &&
-    tagsData?.models.findIndex(item => item.title.find(item => item.lang === locale)) !== -1
-      ? tagsData?.models.findIndex(item => item.title.find(item => item.lang === locale))
-      : 0;
-  const subCategoryIndexLang =
-    subCategory?.models?.findIndex(item => item.title.find(el => el.lang === locale)) &&
-    subCategory?.models?.findIndex(item => item.title.find(el => el.lang === locale)) !== -1
-      ? subCategory?.models?.findIndex(item => item.title.find(el => el.lang === locale))
-      : 0;
+  const optionsSubCategory = subCategory?.models.map(item => {
+    const index =
+      item?.title?.findIndex(el => el.lang === locale) !== -1
+        ? item?.title?.findIndex(el => el.lang === locale)
+        : 0;
+    return {
+      label: item.title[index]?.value,
+      value: item._id,
+    };
+  });
 
-  const optionsSubCategory = subCategory?.models.map(item => ({
-    label: item.title[subCategoryIndexLang].value,
-    value: item._id,
-  }));
-
-  const optionsTags = tagsData?.models.map(item => ({
-    label: item.title[indeLangoptions].value,
-    value: item._id,
-  }));
+  const optionsTags = tagsData?.models.map(item => {
+    const index =
+      item?.title?.findIndex(el => el.lang === locale) !== -1
+        ? item?.title?.findIndex(el => el.lang === locale)
+        : 0;
+    return {
+      label: item.title[index]?.value,
+      value: item._id,
+    };
+  });
 
   const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(AdvicePetActions.setSearch(e.target?.value));

@@ -19,7 +19,8 @@ export default {
   selectArticleLanguages: 'Оберіть мови статей',
   loadMore: 'Завантажити більше',
   subscribeToNewsletter: 'Підпишіться на розсилку',
-  getInterestingArticlesFromPetsHealth: 'Отримуйте іікаві статті від PetsHealth',
+  getInterestingArticlesFromPetsHealth:
+    'Отримуйте цікаві статті від PetsHealth про ваших улюбленців на свою електронну адресу',
   yourName: 'Ваше ім’я',
   email: 'Email',
   typeOfPets: 'Вид(и) домашніх тварин',

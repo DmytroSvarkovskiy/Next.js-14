@@ -132,5 +132,5 @@ export type TTagsResponse = {
 export type TSubscriptionParams = {
   name: string;
   email: string;
-  tags: string[];
+  categories: string[];
 };

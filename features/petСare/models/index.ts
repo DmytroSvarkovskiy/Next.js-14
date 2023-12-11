@@ -41,6 +41,9 @@ export const AdvicePetSlice = createSlice({
         state.tags = [];
       }
     },
+    setOneTag: (state, { payload }: PayloadAction<string>) => {
+      state.tags = [payload];
+    },
     setLanguages: (state, { payload }: PayloadAction<string>) => {
       state.languages = payload;
     },

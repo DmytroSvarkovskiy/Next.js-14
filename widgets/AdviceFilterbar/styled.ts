@@ -37,6 +37,9 @@ export const OptionItem = styled(Container)`
   gap: 8px;
   cursor: pointer;
   padding: 8px;
+  &:hover {
+    background-color: #ebf3ff;
+  }
   &:not(:last-child) {
     margin-bottom: 8px;
   }
@@ -47,7 +50,7 @@ export const selectStyles = {
     ...provided,
     padding: '0px',
     height: '44px',
-    width: '232px',
+    width: '300px',
   }),
 
   control: (
@@ -56,7 +59,7 @@ export const selectStyles = {
   ) => ({
     ...provided,
     height: '44px',
-    width: '232px',
+    width: '300px',
     padding: ' 0 4px',
     borderRadius: '8px',
     boxShadow: state.isFocused || state.menuIsOpen ? '0 0 0 1px #0086BF' : undefined,
@@ -80,7 +83,7 @@ export const selectStyles = {
 
   menu: (base: CSSObjectWithLabel) => ({
     ...base,
-    width: '232px',
+    width: '300px',
     overflow: 'auto',
   }),
 

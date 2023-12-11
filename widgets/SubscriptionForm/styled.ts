@@ -51,6 +51,7 @@ export const ImageWrap = styled.div`
   align-items: center;
   justify-content: center;
   min-width: 300px;
+  width: 100%;
   background: linear-gradient(
     to bottom right,
     rgba(255, 255, 255, 0.3) 10%,
@@ -66,7 +67,7 @@ export const ImageWrap = styled.div`
     height: 500px;
   }
   @media (min-width: 1200px) {
-    height: 609px;
+    height: 592px;
   }
   img {
     width: 300px;
@@ -100,7 +101,7 @@ export const SelectWrap = styled.div`
 export const selectStyles = {
   valueContainer: (provided: CSSObjectWithLabel) => ({
     ...provided,
-    padding: '0px',
+    padding: '0 8px',
     height: '76px',
     width: '100%',
     '@media(min-width:768px)': {
@@ -165,3 +166,9 @@ export const selectStyles = {
     color: '#646369',
   }),
 };
+
+export const TextLink = styled.span`
+  a {
+    color: ${({ theme }) => theme.colors.blue};
+  }
+`;

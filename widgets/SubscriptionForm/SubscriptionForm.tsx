@@ -7,10 +7,11 @@ import {
   ImageWrap,
   InputsWrap,
   SelectWrap,
+  TextLink,
   selectStyles,
 } from './styled';
 import useSWR from 'swr';
-import { getCategories } from '@/features/petСare/api/api';
+import { createASubscription, getCategories } from '@/features/petСare/api/api';
 import { useCurrentLocale, useI18n } from '@/locales/client';
 import { Inputs } from '@/shared/Inputs';
 import { TOneCategory } from '@/features/petСare/api/types';
@@ -19,6 +20,7 @@ import { Button } from '@/shared/Button/Button';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { TSubscriptionForm } from './types';
 import Select from 'react-select';
+import Container from '@/shared/Container/Container';
 
 export const SubscriptionForm = () => {
   const t = useI18n();
@@ -27,11 +29,10 @@ export const SubscriptionForm = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     control,
     watch,
     formState: { errors },
-  } = useForm<TSubscriptionForm>({ mode: 'all' });
+  } = useForm<TSubscriptionForm>({ mode: 'onSubmit' });
 
   const findLanguageIndex = (categories: TOneCategory) => {
     const index = categories.title.findIndex(title => title.lang === locale);
@@ -45,8 +46,17 @@ export const SubscriptionForm = () => {
     ([, params]) => getCategories(params),
     { revalidateOnFocus: false, keepPreviousData: true }
   );
-  const onSubmit: SubmitHandler<TSubscriptionForm> = data => {
-    console.log(data);
+  const onSubmit: SubmitHandler<TSubscriptionForm> = async data => {
+    const value = {
+      name: data.name,
+      email: data.email,
+      categories: data.categories,
+    };
+    try {
+      await createASubscription(value);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const options = data?.models.map(item => ({
@@ -86,9 +96,12 @@ export const SubscriptionForm = () => {
               <Controller
                 control={control}
                 name="categories"
+                rules={{ required: t('thisFieldIsRequired') }}
                 render={({ field }) => (
                   <Select
+                    required={!!!field.value?.length}
                     isClearable={false}
+                    noOptionsMessage={() => t('noOptionsAvailable')}
                     isMulti
                     placeholder={t('typeOfPets')}
                     value={
@@ -108,13 +121,21 @@ export const SubscriptionForm = () => {
                 )}
               />
             </SelectWrap>
-            <Controller
-              control={control}
-              name="access"
-              render={({ field: { value, onChange } }) => (
-                <Inputs.Checkbox value={value} onChange={onChange} />
-              )}
-            />
+            <Container $alignItems="center" $gap="8px;">
+              <Controller
+                control={control}
+                name="access"
+                render={({ field: { value, onChange } }) => (
+                  <Inputs.Checkbox value={value} onChange={onChange} />
+                )}
+              />
+              <TextLink>
+                {t('iAccept')}{' '}
+                <a href="/" target="_blank">
+                  {t('termsOfUsePetsHealth')}
+                </a>
+              </TextLink>
+            </Container>
           </InputsWrap>
           <Button disabled={!watch('access')} type="submit">
             {t('subscribe')}

@@ -45,4 +45,5 @@ export default {
   noOptionsAvailable: 'No options available',
   noContentAvailable: 'No content available',
   thisFieldIsRequired: 'This field is required',
+  youHaveSubscribedToTheNews: 'Congratulations, you have subscribed to new articles',
 } as const;

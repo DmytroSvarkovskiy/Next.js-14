@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google';
 import RootProvider from '@/lib/RootProvider';
 import { getCurrentLocale } from '@/locales/server';
 import { Footer } from '@/widgets/Footer/Footer';
+import Container from '@/shared/Container/Container';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -18,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang={locale}>
       <RootProvider>
         <body className={montserrat.className}>
-          <main>{children}</main>
+          <main style={{ minHeight: '100vh' }}>{children}</main>
           <Footer />
         </body>
       </RootProvider>

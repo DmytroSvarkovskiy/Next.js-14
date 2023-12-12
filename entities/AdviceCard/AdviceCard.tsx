@@ -19,17 +19,19 @@ const AdviceCard = ({ item }: { item: TOneAdvice }) => {
       ? item.title.findIndex(title => title.lang === lang)
       : 0;
 
-  const indexCategoryLang =
-    item.category?.title?.findIndex(title => title.lang === lang) !== -1
-      ? item.category?.title?.findIndex(title => title.lang === lang)
+  const indexSubCategoryLang =
+    item.subcategory?.title?.findIndex(title => title.lang === lang) !== -1
+      ? item.subcategory?.title?.findIndex(title => title.lang === lang)
       : 0;
 
   const baseURL = process.env.NEXT_PUBLIC_URL_USER;
 
   return (
     <AdviceCardStyled as="li">
-      {typeof indexCategoryLang === 'number' && (
-        <CategoryTitle>{item.category?.title[indexCategoryLang || 0]?.value}</CategoryTitle>
+      {typeof indexSubCategoryLang === 'number' && (
+        <CategoryTitle $color={item?.subcategory?.color || ''}>
+          {item?.title[indexSubCategoryLang || 0]?.value}
+        </CategoryTitle>
       )}
       <Link href={`/advices/${item._id}`}>
         <ImageArticle alt="preview" src={`${baseURL}/public/advice/${item.images[0]}`} />

@@ -18,6 +18,7 @@ export type TOneAdvice = {
       _id: string;
     }[];
     _id: string;
+    color: string;
   };
   tags: {
     _id: string;
@@ -103,8 +104,8 @@ export type TOneSubcategory = {
 
     image: string;
     _id: string;
-    color: string;
   };
+  color: string;
   createdAt: string;
   updatedAt: string;
 };

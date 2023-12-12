@@ -10,6 +10,7 @@ import { Article } from './_ui/Article/Article';
 import { Metadata } from 'next';
 import { Title } from './_ui/Title/Title';
 import { BottomTags } from './_ui/BottomTags/BottomTags';
+import { Suspense } from 'react';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const id = params.id;
@@ -40,7 +41,7 @@ const Page = async ({ params }: { params: { id: string; locale: string } }) => {
       : 0;
 
   return (
-    <>
+    <Suspense fallback={null}>
       <I18nProviderClient locale={locale}>
         <Header />
         <BlurWrap />
@@ -52,7 +53,7 @@ const Page = async ({ params }: { params: { id: string; locale: string } }) => {
           <BottomTags tags={advice.tags} />
         </PageWrapper>
       </I18nProviderClient>
-    </>
+    </Suspense>
   );
 };
 export default Page;

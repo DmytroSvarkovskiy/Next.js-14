@@ -30,7 +30,7 @@ export const MainImagePost = styled(Image).attrs({ width: 744, height: 420 })`
     width: 744px;
   }
 `;
-export const CategoryName = styled(Container)`
+export const CategoryName = styled(Container)<{ $color: string }>`
   position: absolute;
 
   top: 20px;
@@ -38,7 +38,7 @@ export const CategoryName = styled(Container)`
   padding: 4px 16px;
   width: auto;
   color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.blue};
+  background-color: ${({ theme, $color }) => $color || theme.colors.blue};
   border-radius: 16px;
   align-items: 16px;
 `;

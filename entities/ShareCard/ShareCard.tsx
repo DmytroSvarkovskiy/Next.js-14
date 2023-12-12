@@ -17,14 +17,16 @@ export const ShareCard = ({ data }: { data: TOneAdvice }) => {
   const baseURL = process.env.NEXT_PUBLIC_URL_USER;
   const lang = useCurrentLocale();
   const url = `${baseURL}/${lang}/advices/${data._id}`;
-  const indexLang = data?.category?.title?.findIndex(title => title.lang === lang) ?? 0;
+  const indexLang = data?.subcategory?.title?.findIndex(title => title.lang === lang) ?? 0;
 
   return (
     <Wrapper>
       <ShareWrapper>
         <MainImagePost alt="photoPost" src={`${baseURL}/public/advice/${data.images[0]}`} />
-        {data.category?.title[indexLang]?.value.length && (
-          <CategoryName>{data.category?.title[indexLang]?.value}</CategoryName>
+        {data.subcategory?.title[indexLang]?.value.length && (
+          <CategoryName $color={data?.subcategory?.color || '#0086BF'}>
+            {data.subcategory?.title[indexLang]?.value}
+          </CategoryName>
         )}
         <SharedButtonWrap>
           <FacebookShareButton url={url}>

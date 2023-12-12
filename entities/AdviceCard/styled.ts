@@ -64,7 +64,7 @@ export const ArticleCardText = styled(Container)`
     font-size: 20px;
   }
 `;
-export const CategoryTitle = styled(Container)`
+export const CategoryTitle = styled(Container)<{ $color: string }>`
   position: absolute;
   width: auto;
   top: 12px;
@@ -72,6 +72,6 @@ export const CategoryTitle = styled(Container)`
   border-radius: 100px;
   align-items: center;
   padding: 4px 16px;
-  background-color: ${({ theme }) => theme.colors.blue};
+  background-color: ${({ theme, $color }) => $color || theme.colors.blue};
   color: ${({ theme }) => theme.colors.white};
 `;

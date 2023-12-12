@@ -11,7 +11,12 @@ export const InputsWrapper = styled.div`
   min-height: 50px;
   align-items: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+  }
   @media (min-width: 1200px) {
     flex-direction: row;
     justify-content: space-between;
@@ -21,6 +26,9 @@ export const SearchWrap = styled.div`
   width: 300px;
   position: relative;
   margin: 0;
+  @media (min-width: 768px) {
+    width: 270px;
+  }
   @media (min-width: 1200px) {
     width: 340px;
   }
@@ -33,6 +41,16 @@ export const SearchWrap = styled.div`
       height: 20px;
       color: ${({ theme }) => theme.colors.grey};
     }
+  }
+`;
+export const SelectWrap = styled.div`
+  width: 300px;
+
+  @media (min-width: 768px) {
+    width: 270px;
+  }
+  @media (min-width: 1200px) {
+    width: 340px;
   }
 `;
 export const OptionItem = styled(Container)`
@@ -52,7 +70,7 @@ export const selectStyles = {
     ...provided,
     padding: '0px',
     height: '44px',
-    width: '300px',
+    width: '100%',
   }),
 
   control: (
@@ -61,7 +79,7 @@ export const selectStyles = {
   ) => ({
     ...provided,
     height: '44px',
-    width: '300px',
+    width: '100%',
     padding: ' 0 4px',
     borderRadius: '8px',
     boxShadow: state.isFocused || state.menuIsOpen ? '0 0 0 1px #0086BF' : undefined,
@@ -85,7 +103,7 @@ export const selectStyles = {
 
   menu: (base: CSSObjectWithLabel) => ({
     ...base,
-    width: '300px',
+    width: '100%',
     overflow: 'auto',
   }),
 

@@ -5,7 +5,7 @@ import PageWrapper from '@/shared/PageWrapper/PageWrapper';
 import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
-import { InputsWrapper, SearchWrap, selectStyles } from './styled';
+import { InputsWrapper, SearchWrap, SelectWrap, selectStyles } from './styled';
 import { useCurrentLocale, useI18n } from '@/locales/client';
 import useSWR from 'swr';
 import { getSubCategories, getTags } from '@/features/petСare/api/api';
@@ -101,46 +101,51 @@ const AdviceFilterBar = () => {
               <BsSearch />
             </div>
           </SearchWrap>
-
-          <Select
-            isDisabled={!!!categories}
-            components={{ Option }}
-            styles={selectStyles}
-            placeholder={t('selectCategories')}
-            menuPortalTarget={menuPortalTarget || undefined}
-            options={optionsSubCategory}
-            noOptionsMessage={() => t('noOptionsAvailable')}
-            isClearable
-            onChange={value => handleSelectChange(value, 'subcategory')}
-            value={
-              subcategory?.length
-                ? {
-                    value: subcategory.length + '',
-                    label: `${t('selectCategories')} ${
-                      subcategory?.length && `(${subcategory?.length})`
-                    }`,
-                  }
-                : undefined
-            }
-          />
-          <Select
-            components={{ Option: OptionTags }}
-            styles={selectStyles}
-            placeholder={t('selectTags')}
-            menuPortalTarget={menuPortalTarget || undefined}
-            options={optionsTags}
-            noOptionsMessage={() => t('noOptionsAvailable')}
-            isClearable
-            onChange={value => handleSelectChange(value, 'tags')}
-            value={
-              tags?.length
-                ? {
-                    value: tags.length + '',
-                    label: `${t('selectTags')} ${tags?.length && `(${tags?.length})`}`,
-                  }
-                : undefined
-            }
-          />
+          <SelectWrap>
+            {' '}
+            <Select
+              isDisabled={!!!categories}
+              components={{ Option }}
+              styles={selectStyles}
+              placeholder={t('selectCategories')}
+              menuPortalTarget={menuPortalTarget || undefined}
+              options={optionsSubCategory}
+              noOptionsMessage={() => t('noOptionsAvailable')}
+              isClearable
+              onChange={value => handleSelectChange(value, 'subcategory')}
+              value={
+                subcategory?.length
+                  ? {
+                      value: subcategory.length + '',
+                      label: `${t('selectCategories')} ${
+                        subcategory?.length && `(${subcategory?.length})`
+                      }`,
+                    }
+                  : undefined
+              }
+            />
+          </SelectWrap>
+          <SelectWrap>
+            {' '}
+            <Select
+              components={{ Option: OptionTags }}
+              styles={selectStyles}
+              placeholder={t('selectTags')}
+              menuPortalTarget={menuPortalTarget || undefined}
+              options={optionsTags}
+              noOptionsMessage={() => t('noOptionsAvailable')}
+              isClearable
+              onChange={value => handleSelectChange(value, 'tags')}
+              value={
+                tags?.length
+                  ? {
+                      value: tags.length + '',
+                      label: `${t('selectTags')} ${tags?.length && `(${tags?.length})`}`,
+                    }
+                  : undefined
+              }
+            />
+          </SelectWrap>
         </InputsWrapper>
       )}
     </PageWrapper>

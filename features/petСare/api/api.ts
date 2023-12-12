@@ -5,6 +5,7 @@ import {
   TCategoriesResponse,
   TCategoryParams,
   TOneAdvice,
+  TPoliticsResponse,
   TSubCategoryParams,
   TSubCategoryResponse,
   TSubscriptionParams,
@@ -35,22 +36,6 @@ export const getCurrentAdvice = async (id: string): Promise<TOneAdvice> => {
   return data;
 };
 
-// export const getAdvices = async (params: TAdviceParams): Promise<TAdviceResponse> => {
-//   const res = await fetch(`${baseURL}/ads/api/v1/user/advice`, {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'X-Custom-Params': JSON.stringify(params),
-//     },
-//     next: { tags: ['advicesList'] },
-//   });
-//   if (!res.ok) {
-//     throw new Error('Failed to fetch data');
-//   }
-//   const data: TAdviceResponse = await res.json();
-
-//   return data;
-// };
-
 export const getCategories = async (params: TCategoryParams) => {
   const query = new URLSearchParams(params).toString();
   const res = await fetch(`${baseURL}/ads/api/v1/user/ads-categories?${query}`, {
@@ -69,7 +54,7 @@ export const getCategories = async (params: TCategoryParams) => {
 
 export const getSubCategories = async (params: TSubCategoryParams) => {
   const query = new URLSearchParams(params).toString();
-  const res = await fetch(`${baseURL}/ads/api/v1/user/ads-subcategories?${query}`, {
+  const res = await fetch(`${baseURL}/ads/api/v1/user/advice-subcategories?${query}`, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -111,4 +96,19 @@ export const createASubscription = async (data: TSubscriptionParams) => {
   if (!res.ok) {
     throw new Error('Failed to post data');
   }
+};
+
+export const getPoliticsText = async () => {
+  const res = await fetch(`${baseURL}/administrative/api/v1/user/sectionInfo`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    next: { tags: ['politicsInfo'] },
+  });
+  if (!res.ok) {
+    throw new Error('Failed to post data');
+  }
+  const data: TPoliticsResponse = await res.json();
+
+  return data;
 };

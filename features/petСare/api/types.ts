@@ -103,6 +103,7 @@ export type TOneSubcategory = {
 
     image: string;
     _id: string;
+    color: string;
   };
   createdAt: string;
   updatedAt: string;
@@ -133,4 +134,19 @@ export type TSubscriptionParams = {
   name: string;
   email: string;
   categories: string[];
+};
+export type TPoliticsType = 'privacy' | 'about' | 'conditions';
+
+export type TPoliticsResponse = {
+  sectionInfo: {
+    _id: string;
+    name: TPoliticsType;
+    title: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+    title_ru: string;
+    title_ua: string;
+  }[];
+  total: number;
 };

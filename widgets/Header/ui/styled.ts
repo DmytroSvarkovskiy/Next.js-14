@@ -46,6 +46,6 @@ export const Singlevalue = styled.div`
   width: 33px;
   font-size: 16px;
   @media (min-width: 768px) {
-    padding: 2px 5px;
+    padding: 2px 3px;
   }
 `;

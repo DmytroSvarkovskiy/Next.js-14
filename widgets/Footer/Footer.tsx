@@ -28,15 +28,15 @@ export const Footer = async () => {
             </Container>
           </TopWrap>
           <LinksWrap>
-            <a target="_blank" href="/">
+            <Link target="_blank" href="/protectionPolicy">
               {t('personalDataProtectionPolicy')}
-            </a>
-            <a target="_blank" href="/">
+            </Link>
+            <Link target="_blank" href="/termsOfUse">
               {t('termsOfUse')}
-            </a>
-            <a target="_blank" href="/">
+            </Link>
+            <Link target="_blank" href="/privacyNotice">
               {t('privacyNotice')}
-            </a>
+            </Link>
           </LinksWrap>
           <p>© 2023 PetsHealth</p>
         </FooterWrap>

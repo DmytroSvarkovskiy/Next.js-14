@@ -46,4 +46,5 @@ export default {
   noContentAvailable: 'No content available',
   thisFieldIsRequired: 'This field is required',
   youHaveSubscribedToTheNews: 'Congratulations, you have subscribed to new articles',
+  languages: { uk: 'uk', en: 'en' },
 } as const;

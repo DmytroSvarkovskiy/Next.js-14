@@ -54,6 +54,9 @@ export const AdvicePetSlice = createSlice({
     setVisibleFilter: state => {
       state.visibleFilter = !state.visibleFilter;
     },
+    openFilter: state => {
+      state.visibleFilter = true;
+    },
     toggleSubcategory: (state, { payload }: PayloadAction<string>) => {
       if (payload) {
         if (state.subcategory === null) {

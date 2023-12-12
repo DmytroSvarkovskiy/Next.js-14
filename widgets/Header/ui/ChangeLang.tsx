@@ -2,19 +2,19 @@
 import Select from 'react-select';
 import { SingleValue, Option } from './selectComponent';
 import { selectStylesLang } from './styled';
-import { useCurrentLocale, useChangeLocale } from '@/locales/client';
+import { useCurrentLocale, useChangeLocale, useI18n } from '@/locales/client';
 import { useEffect, useState } from 'react';
-
-const langOptions = [
-  { label: 'ua', value: 'uk' },
-  { label: 'en', value: 'en' },
-];
 
 export const ChangeLang = () => {
   const locale = useCurrentLocale();
+  const t = useI18n();
   const changeLocale = useChangeLocale();
   const [menuPortalTarget, setMenuPortalTarget] = useState<HTMLElement | null>(null);
 
+  const langOptions = [
+    { label: t('languages.uk'), value: 'uk' },
+    { label: t('languages.en'), value: 'en' },
+  ];
   useEffect(() => {
     setMenuPortalTarget(document.body);
   }, []);

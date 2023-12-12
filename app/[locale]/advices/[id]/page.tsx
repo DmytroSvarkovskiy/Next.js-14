@@ -9,6 +9,7 @@ import { BlurWrap } from './_ui/BlurWrap/BlurWrap';
 import { Article } from './_ui/Article/Article';
 import { Metadata } from 'next';
 import { Title } from './_ui/Title/Title';
+import { BottomTags } from './_ui/BottomTags/BottomTags';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const id = params.id;
@@ -28,16 +29,16 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-const Page = async ({ params }: { params: { id: string } }) => {
-  const id = params.id;
+const Page = async ({ params }: { params: { id: string; locale: string } }) => {
+  const { id, locale } = params;
 
   const advice = await getCurrentAdvice(id);
-  const locale = getCurrentLocale();
 
   const indexLang =
     advice?.title.findIndex(title => title.lang === locale) !== -1
       ? advice?.title.findIndex(title => title.lang === locale)
       : 0;
+
   return (
     <>
       <I18nProviderClient locale={locale}>
@@ -46,8 +47,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <PageWrapper $alignItems="flex-start" $justifyContent="flex-start" $flexDirection="column">
           <Breadcrumbs title={advice.title[indexLang].value} />
           <ShareCard data={advice} />
-          <Title title={advice.title[indexLang].value} />
+          <Title title={advice.title[indexLang].value} tags={advice.tags} />
           <Article data={advice} />
+          <BottomTags tags={advice.tags} />
         </PageWrapper>
       </I18nProviderClient>
     </>

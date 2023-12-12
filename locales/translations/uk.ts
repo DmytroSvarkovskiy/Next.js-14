@@ -47,4 +47,5 @@ export default {
   noContentAvailable: 'Немає доступного вмісту',
   thisFieldIsRequired: "Це поле є обов'язковим",
   youHaveSubscribedToTheNews: 'Вітаємо, ви підписалися на нові статті',
+  languages: { uk: 'укр', en: 'анг' },
 } as const;

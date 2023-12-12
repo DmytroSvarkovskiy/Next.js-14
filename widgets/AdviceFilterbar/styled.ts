@@ -1,7 +1,33 @@
 'use client';
 import Container from '@/shared/Container/Container';
 import { CSSObjectWithLabel, ControlProps, OptionProps } from 'react-select';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    height: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+   height: auto;
+    transform: translateY(0);
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+    height: auto;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+     height: 0;
+    transform: translateY(-20px);
+  }
+`;
 
 export const InputsWrapper = styled.div`
   display: flex;
@@ -12,6 +38,15 @@ export const InputsWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 16px;
+  &.animated-visible {
+    animation: ${fadeIn} 0.3s ease forwards;
+    visibility: visible;
+  }
+
+  &.animated-hidden {
+    animation: ${fadeOut} 0.3s ease forwards;
+    visibility: hidden;
+  }
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;

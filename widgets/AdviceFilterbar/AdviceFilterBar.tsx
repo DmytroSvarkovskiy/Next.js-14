@@ -82,11 +82,12 @@ const AdviceFilterBar = () => {
       dispatch(AdvicePetActions.toggleTags(''));
     }
   };
+  const filterBarClass = visibleFilter && isReady ? 'animated-visible' : 'animated-hidden';
 
   return (
     <PageWrapper>
       {visibleFilter && isReady && (
-        <InputsWrapper>
+        <InputsWrapper className={filterBarClass}>
           <SearchWrap>
             <Inputs.Default
               width="100%"

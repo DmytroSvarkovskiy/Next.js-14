@@ -17,12 +17,12 @@ const Advice = async () => {
   const t = await getI18n();
 
   return (
-    <Suspense fallback={null}>
+    <>
       <HeroSection text={t('petCareAdvice')} filterBar={<AnimalTypes />} />
       <AdviceFilterBar />
       <ArticleList />
       <SubscriptionForm />
-    </Suspense>
+    </>
   );
 };
 export default Advice;
